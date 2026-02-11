@@ -1,5 +1,10 @@
 {
-  "appId": "com.example.helloworld",
+  "appId": "com.ahmedahmedov.thunderyds",
   "appName": "Thunder YDS",
-  "webDir": "www"
+  "webDir": "www",
+  "version": "1.0.0",
+  "ios": {
+    "scheme": "Thunder YDS",
+    "contentInset": "always"
+  }
 }
