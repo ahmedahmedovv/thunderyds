@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Master academic vocabulary for YDS exam with AI-powered quizzes">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Thunder YDS</title>
+
+    <style>
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - iOS Design System Stylesheet (Merged)
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --font-ios: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'Segoe UI', sans-serif;
+    --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+    
+    --text-large-title: clamp(28px, 8vw, 38px);
+    --text-title-1: clamp(24px, 6vw, 32px);
+    --text-title-2: clamp(20px, 5vw, 26px);
+    --text-title-3: clamp(18px, 4.5vw, 22px);
+    --text-headline: clamp(15px, 4vw, 18px);
+    --text-body: clamp(15px, 4vw, 18px);
+    --text-callout: clamp(14px, 3.8vw, 17px);
+    --text-subhead: clamp(13px, 3.5vw, 16px);
+    --text-footnote: clamp(12px, 3.2vw, 14px);
+    --text-caption: clamp(11px, 3vw, 13px);
+    
+    --ios-system-blue: #007AFF;
+    --ios-system-blue-hover: #0066CC;
+    --ios-system-green: #34C759;
+    --ios-system-red: #FF3B30;
+    --ios-system-orange: #FF9500;
+    --ios-system-yellow: #FFCC00;
+    --ios-system-pink: #FF2D55;
+    --ios-system-purple: #AF52DE;
+    --ios-system-teal: #5AC8FA;
+    --ios-system-indigo: #5856D6;
+    --ios-system-gray: #8E8E93;
+    --ios-system-gray2: #AEAEB2;
+    --ios-system-gray3: #C7C7CC;
+    --ios-system-gray4: #D1D1D6;
+    --ios-system-gray5: #E5E5EA;
+    --ios-system-gray6: #F2F2F7;
+    
+    --ios-disabled-opacity: 0.4;
+    
+    --ios-label: #000000;
+    --ios-label-secondary: rgba(60, 60, 67, 0.60);
+    --ios-label-tertiary: rgba(60, 60, 67, 0.30);
+    --ios-label-quaternary: rgba(60, 60, 67, 0.18);
+    --ios-system-background: #FFFFFF;
+    --ios-secondary-background: #F2F2F7;
+    --ios-tertiary-background: #FFFFFF;
+    --ios-grouped-background: #F2F2F7;
+    --ios-secondary-grouped-background: #FFFFFF;
+    --ios-tertiary-grouped-background: #F2F2F7;
+    --ios-separator: #C6C6C8;
+    --ios-opaque-separator: #C6C6C8;
+    --ios-fill: rgba(120, 120, 128, 0.20);
+    --ios-secondary-fill: rgba(120, 120, 128, 0.16);
+    --ios-tertiary-fill: rgba(118, 118, 128, 0.12);
+    
+    --ios-spring: cubic-bezier(0.32, 0.72, 0, 1);
+    --ios-ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+    --ios-ease-in: cubic-bezier(0.5, 0, 0.75, 0.5);
+    --ios-default: cubic-bezier(0.4, 0.0, 0.2, 1);
+    
+    --space-xs: clamp(2px, 1vw, 6px);
+    --space-sm: clamp(6px, 2vw, 12px);
+    --space-md: clamp(12px, 4vw, 20px);
+    --space-lg: clamp(16px, 5vw, 28px);
+    --space-xl: clamp(24px, 6vw, 40px);
+    
+    --container-max: 100%;
+    --content-max: min(100%, 520px);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ios-label: #FFFFFF;
+        --ios-label-secondary: rgba(235, 235, 245, 0.60);
+        --ios-label-tertiary: rgba(235, 235, 245, 0.30);
+        --ios-label-quaternary: rgba(235, 235, 245, 0.16);
+        --ios-system-background: #000000;
+        --ios-secondary-background: #1C1C1E;
+        --ios-tertiary-background: #2C2C2E;
+        --ios-grouped-background: #000000;
+        --ios-secondary-grouped-background: #1C1C1E;
+        --ios-tertiary-grouped-background: #2C2C2E;
+        --ios-separator: rgba(84, 84, 88, 0.60);
+        --ios-opaque-separator: #38383A;
+        --ios-fill: rgba(120, 120, 128, 0.36);
+        --ios-secondary-fill: rgba(120, 120, 128, 0.32);
+        --ios-tertiary-fill: rgba(118, 118, 128, 0.24);
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --ios-label-secondary: rgba(60, 60, 67, 0.8);
+        --ios-separator: #8E8E93;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: var(--font-ios);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--ios-label);
+    background: var(--ios-grouped-background);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Error Boundary */
+.global-error-boundary {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--ios-system-background);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-lg);
+    z-index: 10000;
+    text-align: center;
+}
+.global-error-boundary.active { display: flex; }
+.global-error-boundary h2 {
+    font-size: var(--text-title-2);
+    color: var(--ios-system-red);
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+.global-error-boundary p {
+    color: var(--ios-label-secondary);
+    margin-bottom: var(--space-lg);
+    max-width: 400px;
+    font-size: var(--text-body);
+}
+.global-error-boundary button {
+    padding: 12px 24px;
+    background: var(--ios-system-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: var(--text-headline);
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 50px;
+    transition: transform 0.2s var(--ios-spring), opacity 0.2s ease;
+}
+.global-error-boundary button:active { transform: scale(0.96); opacity: 0.9; }
+
+/* Notifications */
+.notification-container {
+    position: fixed;
+    top: calc(env(safe-area-inset-top) + var(--space-sm));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: calc(100% - clamp(16px, 8vw, 48px));
+    max-width: min(400px, 90vw);
+    pointer-events: none;
+}
+.notification {
+    background: rgba(240, 240, 240, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--ios-label);
+    padding: clamp(10px, 3vw, 14px) clamp(14px, 4vw, 18px);
+    border-radius: clamp(10px, 3vw, 14px);
+    font-size: clamp(13px, 3.8vw, 15px);
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 2.5vw, 12px);
+    margin-bottom: var(--space-sm);
+    pointer-events: auto;
+    animation: notificationEnter 0.4s var(--ios-spring);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+@media (prefers-color-scheme: dark) {
+    .notification { background: rgba(40, 40, 40, 0.95); color: white; }
+}
+@keyframes notificationEnter {
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.notification.exit { animation: notificationExit 0.3s var(--ios-ease-in) forwards; }
+@keyframes notificationExit { to { opacity: 0; transform: translateY(-10px); } }
+.notification-icon { flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }
+.notification.success .notification-icon { color: var(--ios-system-green); }
+.notification.error .notification-icon { color: var(--ios-system-red); }
+.notification.warning .notification-icon { color: var(--ios-system-orange); }
+.notification.info .notification-icon { color: var(--ios-system-blue); }
+.notification-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--ios-label-tertiary);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+.notification-close:hover, .notification-close:active { color: var(--ios-label); }
+
+/* Headers */
+.quiz-header, .flashcard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    padding-top: max(var(--space-md), env(safe-area-inset-top));
+    background: var(--ios-system-background);
+    border-bottom: 1px solid var(--ios-separator);
+    flex-shrink: 0;
+}
+.quiz-header-title, .flashcard-title {
+    font-size: var(--text-headline);
+    font-weight: 600;
+    color: var(--ios-label);
+}
+.quiz-header-progress, .flashcard-progress-text {
+    font-size: var(--text-subhead);
+    color: var(--ios-label-secondary);
+    font-weight: 600;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Back Button */
+.btn-back {
+    background: none;
+    border: none;
+    color: var(--ios-system-blue);
+    font-family: inherit;
+    font-size: var(--text-subhead);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.2s ease;
+}
+.btn-back svg { width: 24px; height: 24px; fill: currentColor; }
+.btn-back:active { opacity: 0.6; }
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: var(--space-xl) 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.loading.hidden { display: none; }
+.spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--ios-tertiary-fill);
+    border-top-color: var(--ios-system-blue);
+    border-radius: 50%;
+    margin: 0 auto var(--space-md);
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p { color: var(--ios-label-secondary); font-size: var(--text-subhead); }
+
+/* Error State */
+.error-state {
+    text-align: center;
+    padding: var(--space-xl) var(--space-md);
+    background: var(--ios-secondary-grouped-background);
+    border-radius: 12px;
+    margin: var(--space-md) 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.error-state.hidden { display: none; }
+.error-state h3 { color: var(--ios-system-red); margin-bottom: var(--space-sm); font-size: var(--text-title-3); font-weight: 600; }
+.error-state p { color: var(--ios-label-secondary); font-size: var(--text-subhead); margin-bottom: var(--space-lg); }
+.error-state button {
+    padding: 12px 24px;
+    background: var(--ios-system-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: var(--text-headline);
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 50px;
+    transition: transform 0.2s var(--ios-spring), opacity 0.2s ease;
+}
+.error-state button:active { transform: scale(0.96); opacity: 0.9; }
+
+/* Question Area */
+.question-area { flex: 1 1 auto; display: flex; flex-direction: column; padding: var(--space-md) var(--space-lg); padding-bottom: max(var(--space-md), env(safe-area-inset-bottom)); overflow-y: auto; -webkit-overflow-scrolling: touch; min-height: 0; gap: var(--space-sm); }
+.question-area.hidden { display: none; }
+
+.sentence {
+    font-size: clamp(14px, 4vw, 18px);
+    line-height: 1.6;
+    margin-bottom: clamp(12px, 4vw, 20px);
+    padding: clamp(12px, 4vw, 20px);
+    background: var(--ios-secondary-grouped-background);
+    border-radius: clamp(10px, 3vw, 14px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    color: var(--ios-label);
+    flex-shrink: 0;
+}
+@media (prefers-color-scheme: dark) {
+    .sentence { box-shadow: none; border: 0.5px solid var(--ios-separator); }
+}
+
+.blank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(56px, 18vw, 84px);
+    height: 1.5em;
+    background: var(--ios-fill);
+    border-radius: clamp(4px, 1.5vw, 8px);
+    margin: 0 clamp(2px, 1vw, 6px);
+    vertical-align: baseline;
+    font-family: var(--font-mono);
+    font-size: clamp(0.8em, 3vw, 0.95em);
+    color: var(--ios-label-secondary);
+    letter-spacing: clamp(1px, 0.5vw, 3px);
+    padding: 0 clamp(4px, 2vw, 10px);
+}
+
+/* Options */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--ios-secondary-grouped-background);
+    border-radius: clamp(10px, 2.5vw, 14px);
+    overflow: hidden;
+    margin-bottom: clamp(12px, 4vw, 20px);
+    flex-shrink: 0;
+}
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: clamp(12px, 3.5vw, 16px) clamp(14px, 4vw, 18px);
+    min-height: clamp(48px, 12vh, 58px);
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--ios-separator);
+    font-family: inherit;
+    font-size: clamp(14px, 3.8vw, 17px);
+    color: var(--ios-label);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    position: relative;
+    width: 100%;
+}
+.option-main { display: flex; align-items: center; width: 100%; }
+.option-text { flex: 1; }
+.option-explanation {
+    display: none;
+    font-size: clamp(11px, 3vw, 13px);
+    color: var(--ios-label-secondary);
+    line-height: 1.4;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 0.5px solid var(--ios-separator);
+    padding-left: clamp(34px, 8vw, 42px);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.option-explanation.show { display: block; }
+.option:last-child { border-bottom: none; }
+
+.question-area.answered { justify-content: flex-start; }
+.question-area.answered .options { margin-bottom: clamp(10px, 2vh, 14px); flex-shrink: 0; }
+.question-area.answered .option { padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 16px); min-height: clamp(44px, 10vh, 52px); font-size: clamp(13px, 3.5vw, 16px); }
+.question-area.answered .option .key { width: clamp(24px, 6vw, 30px); height: clamp(24px, 6vw, 30px); font-size: clamp(11px, 2.8vw, 13px); margin-right: clamp(10px, 2.5vw, 14px); flex-shrink: 0; }
+.question-area.answered .option-explanation { font-size: clamp(10px, 2.8vw, 12px); padding-left: clamp(34px, 8vw, 42px); }
+.question-area.answered .sentence { padding: clamp(12px, 3vw, 18px); margin-bottom: clamp(12px, 3vh, 18px); font-size: clamp(14px, 3.8vw, 17px); flex-shrink: 0; }
+
+.option { animation: optionEnter 0.4s var(--ios-spring) backwards; }
+@keyframes optionEnter { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+.option:active:not(:disabled) { background: var(--ios-fill); }
+.option:disabled { cursor: default; }
+.option .key {
+    width: clamp(24px, 7vw, 32px);
+    height: clamp(24px, 7vw, 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ios-tertiary-fill);
+    border-radius: clamp(5px, 1.5vw, 8px);
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 3.2vw, 14px);
+    font-weight: 600;
+    color: var(--ios-label-secondary);
+    margin-right: clamp(10px, 3vw, 14px);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.option.selected { background: rgba(0, 122, 255, 0.1); }
+.option.selected .key { background: var(--ios-system-blue); color: white; }
+.option.correct { background: rgba(52, 199, 89, 0.1); }
+.option.correct .key { background: var(--ios-system-green); color: white; }
+.option.incorrect { background: rgba(255, 59, 48, 0.1); }
+.option.incorrect .key { background: var(--ios-system-red); color: white; }
+.option.revealed { background: rgba(52, 199, 89, 0.1); }
+.option.revealed .key { background: var(--ios-system-green); color: white; }
+
+.option.correct::after, .option.incorrect::after {
+    content: '';
+    position: absolute;
+    right: 16px;
+    width: 22px;
+    height: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.option.correct::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2334C759'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E"); }
+.option.incorrect::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF3B30'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E"); }
+
+/* Feedback */
+.feedback {
+    padding: clamp(10px, 2.5vh, 16px) clamp(12px, 3.5vw, 18px);
+    background: var(--ios-secondary-grouped-background);
+    border-radius: clamp(10px, 3vw, 14px);
+    margin-bottom: clamp(10px, 2vh, 14px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    animation: slideUp 0.3s var(--ios-spring);
+    max-height: min(75vh, 600px);
+    min-height: min(120px, 20vh);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+@media (prefers-color-scheme: dark) { .feedback { box-shadow: none; border: 0.5px solid var(--ios-separator); } }
+.feedback.hidden { display: none; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.feedback p { font-size: clamp(12px, 3.2vw, 14px); color: var(--ios-label-secondary); line-height: 1.4; margin: 0; flex-shrink: 0; word-wrap: break-word; overflow-wrap: break-word; }
+
+.explanation-list {
+    margin-top: clamp(8px, 2vh, 12px);
+    padding-top: clamp(8px, 2vh, 12px);
+    border-top: 0.5px solid var(--ios-separator);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1.5vh, 10px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: 100%;
+}
+.explanation-list::-webkit-scrollbar { display: none; }
+.explanation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(6px, 2vw, 10px);
+    font-size: clamp(11px, 3.2vw, 14px);
+    line-height: 1.4;
+    flex-shrink: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.explanation-item .opt-label {
+    flex-shrink: 0;
+    width: clamp(18px, 5.5vw, 24px);
+    height: clamp(18px, 5.5vw, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: clamp(4px, 1.5vw, 6px);
+    font-family: var(--font-mono);
+    font-size: clamp(10px, 3vw, 12px);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+.explanation-item.correct .opt-label { background: var(--ios-system-green); color: white; }
+.explanation-item.wrong .opt-label { background: var(--ios-system-gray4); color: var(--ios-label-secondary); }
+.explanation-item .opt-text { color: var(--ios-label-secondary); flex: 1; word-wrap: break-word; overflow-wrap: break-word; min-width: 0; }
+.explanation-item .opt-text strong { color: var(--ios-label); font-weight: 600; }
+
+/* Offline Indicator */
+.offline-indicator {
+    display: none;
+    background: var(--ios-system-orange);
+    color: white;
+    padding: 10px var(--space-md);
+    font-size: var(--text-subhead);
+    font-weight: 500;
+    text-align: center;
+}
+.offline-indicator.active { display: block; animation: slideDown 0.3s var(--ios-spring); }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+
+/* Welcome Screen */
+.welcome-minimal {
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: max(16px, env(safe-area-inset-top)) clamp(16px, 5vw, 32px) max(16px, env(safe-area-inset-bottom));
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--ios-system-background);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.welcome-minimal.active { display: flex; }
+.welcome-minimal-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 6vh, 48px);
+    width: 100%;
+    max-width: 100%;
+}
+.welcome-minimal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+.welcome-app-name {
+    font-size: clamp(32px, 10vw, 52px);
+    font-weight: 800;
+    color: var(--ios-label);
+    letter-spacing: -1px;
+    margin: 0;
+}
+.welcome-quote {
+    font-size: clamp(14px, 4vw, 18px);
+    font-style: italic;
+    color: var(--ios-label-tertiary);
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+    padding: 0 clamp(16px, 5vw, 32px);
+    flex-shrink: 0;
+}
+.welcome-minimal-action {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+.welcome-minimal-action.hidden { display: none; }
+.btn-minimal {
+    width: 100%;
+    padding: clamp(14px, 4vh, 20px) clamp(20px, 5vw, 28px);
+    background: var(--ios-system-blue);
+    color: white;
+    border: none;
+    border-radius: clamp(10px, 3vw, 14px);
+    font-family: inherit;
+    font-size: var(--text-headline);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    min-height: clamp(48px, 12vh, 58px);
+}
+.btn-minimal:hover { background: var(--ios-system-blue-hover); }
+.btn-minimal:active { transform: scale(0.98); }
+.btn-minimal:focus-visible { outline: 2px solid var(--ios-system-blue); outline-offset: 2px; }
+.welcome-minimal-hint { text-align: center; font-size: var(--text-footnote); color: var(--ios-label-tertiary); margin: 0; }
+
+/* Mode Selection */
+.mode-selection {
+    width: 100%;
+    margin-top: clamp(12px, 3vh, 24px);
+    flex-shrink: 0;
+}
+.mode-selection-title {
+    font-size: var(--text-subhead);
+    font-weight: 600;
+    color: var(--ios-label-secondary);
+    text-align: center;
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.mode-cards { display: flex; flex-direction: column; gap: clamp(10px, 2.5vh, 16px); }
+.mode-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 3vw, 16px);
+    padding: clamp(14px, 3.5vh, 20px) clamp(14px, 4vw, 20px);
+    background: var(--ios-secondary-grouped-background);
+    border: 1px solid var(--ios-separator);
+    border-radius: clamp(12px, 3vw, 16px);
+    cursor: pointer;
+    transition: all 0.2s var(--ios-spring);
+    text-align: left;
+    width: 100%;
+    min-height: 44px;
+    position: relative;
+}
+.mode-card:hover { transform: scale(1.02); border-color: var(--ios-system-blue); background: var(--ios-tertiary-background); }
+.mode-card:active { transform: scale(0.98); }
+.mode-card-icon {
+    flex-shrink: 0;
+    width: clamp(40px, 12vw, 48px);
+    height: clamp(40px, 12vw, 48px);
+    background: var(--ios-system-blue);
+    border-radius: clamp(10px, 3vw, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.mode-card-icon--flashcard { background: var(--ios-system-green); }
+.mode-card-icon svg { width: 24px; height: 24px; }
+.mode-card-content { flex: 1; min-width: 0; }
+.mode-card-content h3 { font-size: clamp(14px, 4vw, 17px); font-weight: 600; color: var(--ios-label); margin: 0 0 clamp(2px, 1vh, 4px) 0; }
+.mode-card-content p { font-size: clamp(12px, 3.5vw, 14px); color: var(--ios-label-secondary); margin: 0; line-height: 1.35; }
+.mode-card-arrow { font-size: var(--text-title-2); color: var(--ios-label-quaternary); transition: transform 0.2s var(--ios-spring); }
+.mode-card:hover .mode-card-arrow { transform: translateX(4px); color: var(--ios-system-blue); }
+
+/* Mode Card Streak Badge */
+.mode-card-streak {
+    position: absolute;
+    top: 12px; right: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: var(--ios-tertiary-fill);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    color: var(--ios-label-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+.mode-card-streak.in-progress { background: var(--ios-system-orange); color: white; }
+.mode-card-streak.completed { background: var(--ios-system-green); color: white; }
+
+/* App & Flashcard Pages */
+.app, .flashcard-page {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--ios-grouped-background);
+    flex-direction: column;
+    overflow: hidden;
+}
+.app.active, .flashcard-page.active { display: flex; }
+
+/* Flashcard Container */
+.flashcard-container {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-md) var(--space-lg);
+    padding-bottom: max(var(--space-md), env(safe-area-inset-bottom));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+    gap: var(--space-sm);
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.flashcard-card {
+    width: 100%;
+    max-width: 340px;
+    background: var(--ios-system-background);
+    border-radius: 20px;
+    padding: var(--space-xl);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    user-select: none;
+    touch-action: pan-y;
+    position: relative;
+}
+.flashcard-card.swipe-left-animation { animation: swipeLeft 0.3s var(--ios-spring) forwards; }
+.flashcard-card.swipe-right-animation { animation: swipeRight 0.3s var(--ios-spring) forwards; }
+@keyframes swipeLeft { to { transform: translateX(-120%) rotate(-20deg); opacity: 0; } }
+@keyframes swipeRight { to { transform: translateX(120%) rotate(20deg); opacity: 0; } }
+
+.flashcard-card.swiping-left::before, .flashcard-card.swiping-right::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+.flashcard-card.swiping-left::before { background: linear-gradient(90deg, rgba(255, 59, 48, 0.1), transparent); opacity: 1; }
+.flashcard-card.swiping-right::before { background: linear-gradient(-90deg, rgba(52, 199, 89, 0.1), transparent); opacity: 1; }
+
+.flashcard-word {
+    font-size: var(--text-large-title);
+    font-weight: 800;
+    color: var(--ios-label);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+.flashcard-example {
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--ios-label-secondary);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: var(--space-xl);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--ios-secondary-background);
+    border-radius: 12px;
+    border-left: 3px solid var(--ios-system-blue);
+    transition: opacity 0.2s ease;
+}
+.flashcard-example.loading { color: var(--ios-label-tertiary); background: var(--ios-fill); border-left-color: var(--ios-system-gray); }
+.flashcard-definition {
+    font-size: var(--text-headline);
+    line-height: 1.5;
+    color: var(--ios-label);
+    text-align: center;
+    font-weight: 500;
+    padding: 0 var(--space-sm);
+    transition: opacity 0.2s ease;
+}
+.flashcard-definition.loading { color: var(--ios-label-tertiary); }
+.word-highlight { color: var(--ios-system-blue); font-weight: 700; font-style: normal; }
+
+/* Action Buttons */
+.quiz-actions, .flashcard-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    padding: var(--space-md) var(--space-lg);
+    padding-bottom: max(var(--space-lg), env(safe-area-inset-bottom));
+    flex-shrink: 0;
+}
+.action-btn {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: var(--ios-system-background);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.action-btn svg { width: 24px; height: 24px; }
+.action-btn:active { transform: scale(0.92); }
+.action-btn--dont-know { color: var(--ios-system-red); }
+.action-btn--dont-know:active { background: rgba(255, 59, 48, 0.1); }
+.action-btn--know { color: var(--ios-system-green); }
+.action-btn--know:active { background: rgba(52, 199, 89, 0.1); }
+.action-btn--next {
+    width: auto;
+    min-width: 140px;
+    border-radius: 28px;
+    padding: 0 var(--space-xl);
+    background: var(--ios-system-blue);
+    color: white;
+    font-size: var(--text-headline);
+    font-weight: 600;
+    gap: 8px;
+}
+.action-btn--next.hidden { display: none; }
+.action-btn--next:active { background: var(--ios-system-blue-hover); }
+
+/* Streak Display */
+.streak-display {
+    background: var(--ios-secondary-grouped-background);
+    padding: var(--space-sm) var(--space-lg);
+    border-bottom: 1px solid var(--ios-separator);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+.streak-display-content { display: flex; align-items: center; gap: var(--space-sm); flex: 1; }
+.streak-icon { font-size: var(--text-headline); flex-shrink: 0; }
+.streak-progress-wrapper { flex: 1; height: 6px; background: var(--ios-tertiary-fill); border-radius: 3px; overflow: hidden; min-width: 80px; }
+.streak-progress-bar { height: 100%; background: linear-gradient(90deg, var(--ios-system-orange), var(--ios-system-red)); border-radius: 3px; transition: width 0.3s ease; width: 0%; }
+.streak-display.completed .streak-progress-bar { background: linear-gradient(90deg, var(--ios-system-green), var(--ios-system-teal)); }
+.streak-progress-text { font-size: var(--text-caption); color: var(--ios-label-secondary); font-weight: 500; white-space: nowrap; min-width: 70px; text-align: right; }
+.streak-count { font-size: var(--text-caption); color: var(--ios-label-tertiary); font-weight: 600; }
+
+/* Streak Celebration */
+@keyframes streak-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.4); } 50% { box-shadow: 0 0 20px 10px rgba(255, 149, 0, 0.2); } 100% { box-shadow: 0 0 0 0 rgba(255, 149, 0, 0); } }
+@keyframes streak-shake { 0%, 100% { transform: translateX(0); } 10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); } 20%, 40%, 60%, 80% { transform: translateX(2px); } }
+.streak-celebration { animation: streak-pulse 1s ease-out; }
+.streak-celebration .streak-display { animation: streak-shake 0.5s ease-in-out; }
+.streak-celebration .streak-progress-bar { animation: streak-pulse 0.6s ease-out; }
+
+/* Responsive */
+@media (max-width: 375px) {
+    :root {
+        --text-large-title: 26px; --text-title-1: 22px; --text-title-2: 18px;
+        --text-body: 14px; --text-callout: 13px; --text-subhead: 12px; --text-footnote: 11px;
+    }
+    .welcome-minimal { padding: 16px; justify-content: center; }
+    .welcome-minimal-content { gap: 24px; }
+    .welcome-app-name { font-size: 32px; }
+    .welcome-quote { font-size: 13px; padding: 0 16px; }
+    .mode-selection { margin-top: 8px; }
+    .mode-selection-title { font-size: 11px; margin-bottom: 10px; }
+    .mode-cards { gap: 10px; }
+    .mode-card { padding: 12px; gap: 10px; }
+    .mode-card-icon { width: 36px; height: 36px; border-radius: 9px; }
+    .mode-card-icon svg { width: 20px; height: 20px; }
+    .mode-card-content h3 { font-size: 14px; }
+    .mode-card-content p { font-size: 11px; }
+    .sentence { font-size: 14px; padding: 12px; margin-bottom: 12px; }
+    .option { min-height: 48px; padding: 12px; font-size: 14px; }
+    .option .key { width: 24px; height: 24px; font-size: 11px; }
+    .flashcard-card { padding: var(--space-lg); border-radius: 16px; }
+    .flashcard-word { font-size: var(--text-title-1); margin-bottom: var(--space-lg); }
+    .flashcard-example { font-size: var(--text-callout); padding: var(--space-sm) var(--space-md); border-radius: 10px; margin-bottom: var(--space-lg); }
+    .flashcard-definition { font-size: var(--text-body); padding: 0 var(--space-xs); }
+    .action-btn { width: 48px; height: 48px; }
+    .action-btn svg { width: 20px; height: 20px; }
+}
+
+@media (min-width: 376px) and (max-width: 400px) {
+    :root { --text-large-title: 32px; --text-title-1: 26px; --text-title-2: 22px; --text-body: 16px; --text-callout: 15px; }
+    .welcome-minimal { padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom)); }
+    .welcome-minimal-content { gap: 32px; }
+    .welcome-app-name { font-size: 40px; }
+}
+
+@media (min-width: 401px) and (max-width: 440px) {
+    :root { --text-large-title: 36px; --text-title-1: 30px; --text-title-2: 24px; --text-body: 17px; --text-callout: 16px; }
+    .welcome-app-name { font-size: 48px; }
+    .mode-card { padding: 18px 22px; }
+}
+
+@media (max-height: 700px) {
+    .welcome-minimal { justify-content: flex-start; padding-top: max(8px, env(safe-area-inset-top)); }
+    .welcome-minimal-content { gap: 10px; }
+    .welcome-app-name { font-size: 26px; }
+    .welcome-quote { font-size: 11px; margin: 4px 0; }
+    .mode-selection { margin-top: 6px; }
+    .mode-cards { gap: 8px; }
+    .mode-card { padding: 10px 12px; }
+}
+
+@media (max-height: 650px) {
+    .welcome-minimal { padding: 12px 16px; justify-content: center; }
+    .welcome-minimal-content { gap: 16px; }
+    .welcome-app-name { font-size: 26px; }
+    .welcome-quote { font-size: 11px; padding: 0 12px; }
+    .mode-selection { margin-top: 4px; }
+    .mode-selection-title { font-size: 10px; margin-bottom: 6px; }
+    .mode-cards { gap: 6px; }
+    .mode-card { padding: 8px 10px; gap: 8px; }
+    .mode-card-icon { width: 32px; height: 32px; border-radius: 8px; }
+    .mode-card-icon svg { width: 18px; height: 18px; }
+    .mode-card-content h3 { font-size: 13px; margin-bottom: 1px; }
+    .mode-card-content p { font-size: 10px; }
+}
+
+/* Accessibility */
+.btn-start:focus-visible, .action-btn:focus-visible, .option:focus-visible, .btn-back:focus-visible, .error-state button:focus-visible {
+    outline: 2px solid var(--ios-system-blue);
+    outline-offset: 2px;
+}
+button, .option { min-height: 44px; }
+.option, .btn-start, .action-btn, .feedback, .flashcard-card { will-change: transform; transform: translateZ(0); }
+
+@media (prefers-color-scheme: dark) {
+    .welcome-minimal { background: var(--ios-system-background); }
+    .mode-card { background: var(--ios-secondary-grouped-background); border-color: var(--ios-separator); }
+    .mode-card:hover { background: var(--ios-tertiary-grouped-background); }
+    .flashcard-card { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2); }
+    .action-btn { background: var(--ios-secondary-grouped-background); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+    .flashcard-example { background: var(--ios-secondary-grouped-background); }
+    .flashcard-example.loading { background: rgba(120, 120, 128, 0.24); }
+    .streak-display { background: var(--ios-secondary-grouped-background); border-color: var(--ios-separator); }
+    .mode-card-streak { background: var(--ios-tertiary-fill); color: var(--ios-label-secondary); }
+    .mode-card-streak.in-progress { background: var(--ios-system-orange); color: white; }
+    .mode-card-streak.completed { background: var(--ios-system-green); color: white; }
+}
+    </style>
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         GLOBAL ERROR BOUNDARY
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="global-error-boundary" id="globalErrorBoundary">
+        <h2>😅 Something went wrong</h2>
+        <p>We encountered an unexpected error. Don't worry - your progress is safe. Try refreshing the page to continue learning.</p>
+        <button onclick="window.location.reload()">Refresh Page</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         NOTIFICATION CONTAINER
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         OFFLINE INDICATOR
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="offline-indicator" id="offlineIndicator">
+        ⚠️ You're offline. Check your connection to continue.
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         MINIMAL WELCOME SCREEN
+         Clean, text-focused design without icon
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="welcome-minimal active" id="welcomePage">
+        <div class="welcome-minimal-content">
+            <!-- Header -->
+            <header class="welcome-minimal-header">
+                <p class="welcome-app-name">Thunder YDS</p>
+            </header>
+            
+            <!-- Quote -->
+            <p class="welcome-quote">"They're using AI to ask, so we'll use AI to answer."</p>
+            
+            <!-- MODE SELECTION -->
+            <div class="mode-selection" id="modeSelection">
+                <p class="mode-selection-title">Choose your study mode</p>
+                
+                <div class="mode-cards">
+                    <button class="mode-card" id="btnModeQuiz">
+                        <div class="mode-card-streak" id="quizStreakBadge">
+                            <span id="quizStreakText">0 🔥</span>
+                        </div>
+                        <div class="mode-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </div>
+                        <div class="mode-card-content">
+                            <h3>Quiz Mode</h3>
+                            <p>Answer AI-generated multiple choice questions with detailed explanations</p>
+                        </div>
+                        <div class="mode-card-arrow">→</div>
+                    </button>
+                    
+                    <button class="mode-card" id="btnModeFlashcard">
+                        <div class="mode-card-streak" id="flashcardStreakBadge">
+                            <span id="flashcardStreakText">0 🔥</span>
+                        </div>
+                        <div class="mode-card-icon mode-card-icon--flashcard">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                            </svg>
+                        </div>
+                        <div class="mode-card-content">
+                            <h3>Flashcards</h3>
+                            <p>Swipe through words with definitions and examples. Swipe right if you know it!</p>
+                        </div>
+                        <div class="mode-card-arrow">→</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         APP PAGE (Quiz Mode)
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="app" id="appPage">
+        <!-- Header -->
+        <header class="quiz-header">
+            <button class="btn-back" id="btnBack">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Back">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back
+            </button>
+            <div class="quiz-header-title">Quiz</div>
+            <div class="quiz-header-progress" id="quizScore">0 / 0</div>
+        </header>
+        
+        <!-- Streak Progress Bar -->
+        <div class="streak-display" id="quizStreakDisplay">
+            <div class="streak-display-content">
+                <span class="streak-icon">🔥</span>
+                <div class="streak-progress-wrapper">
+                    <div class="streak-progress-bar"></div>
+                </div>
+                <span class="streak-progress-text">0/20 words</span>
+            </div>
+            <div class="streak-count">0 days</div>
+        </div>
+
+        <div class="loading hidden" id="loading">
+            <div class="spinner"></div>
+            <p id="loadingText">Generating question...</p>
+        </div>
+
+        <div class="error-state hidden" id="errorState">
+            <h3>⚠️ Couldn't load question</h3>
+            <p id="errorMessage">Something went wrong. Please try again.</p>
+            <button id="btnRetry">Try Again</button>
+        </div>
+
+        <main class="question-area hidden" id="questionArea">
+            <p class="sentence" id="sentence"></p>
+            <div class="options" id="options"></div>
+            <div class="feedback hidden" id="feedback">
+                <p id="feedbackText"></p>
+            </div>
+            <div class="quiz-actions">
+                <button class="action-btn action-btn--next hidden" id="btnNext">
+                    Next
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FLASHCARD PAGE (Tinder-style Study Mode)
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="flashcard-page" id="flashcardPage">
+        <!-- Header -->
+        <header class="flashcard-header">
+            <button class="btn-back" id="btnFlashcardBack">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Back">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back
+            </button>
+            <div class="flashcard-title">Flashcards</div>
+            <div class="flashcard-progress-text" id="flashcardScore">0 / 0</div>
+        </header>
+        
+        <!-- Streak Progress Bar -->
+        <div class="streak-display" id="flashcardStreakDisplay">
+            <div class="streak-display-content">
+                <span class="streak-icon">🔥</span>
+                <div class="streak-progress-wrapper">
+                    <div class="streak-progress-bar"></div>
+                </div>
+                <span class="streak-progress-text">0/20 words</span>
+            </div>
+            <div class="streak-count">0 days</div>
+        </div>
+
+        <!-- Flashcard Container -->
+        <div class="flashcard-container" id="flashcardContainer">
+            <div class="flashcard-card" id="flashcardCard">
+                <div class="flashcard-word" id="flashcardWord">Loading...</div>
+                <div class="flashcard-example loading" id="flashcardExample">Loading example...</div>
+                <div class="flashcard-definition loading" id="flashcardDefinition">Loading definition...</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flashcard-actions">
+            <button class="action-btn action-btn--dont-know" id="btnDontKnow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <button class="action-btn action-btn--know" id="btnKnow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ═════════════════════════════════════════════════════════════════════════════
+         JAVASCRIPT - ALL MODULES MERGED
+         ═════════════════════════════════════════════════════════════════════════════ -->
+    <script>
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Vocabulary Database
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const MYWORDS = [
+    "Abide by", "Abnormal", "Abolish", "Abort", "Abrupt", "Absurd", "Abundant", "Academic",
+    "Accelerate", "Accessible", "Accidental", "Accommodate", "Accomplish", "Account for",
+    "Accountable", "Accumulate", "Accurate", "Accurately", "Accusation", "Accuse of",
+    "Accustomed", "Achieve", "Acknowledge", "Acquainted with", "Acquire", "Act out",
+    "Activate", "Adapt", "Adapt to", "Addicted to", "Adequate", "Adjust", "Admire",
+    "Adopt", "Advance", "Advocate", "Affect", "Afford", "Affordable", "Afterwards",
+    "Agreeable", "Alarming", "Alert", "Along with", "Alter", "Ambitious", "Amusing",
+    "Ancient", "Annoyed", "Anticipate", "Antique", "Anxious", "Apparent", "Apparently",
+    "Appealing", "Applaud", "Appropriately", "Approve of", "Approximate", "Approximately",
+    "Arise", "Artificial", "Ascending", "Aspect", "Assault", "Assemble", "Assess",
+    "Assign", "Assist", "Associate", "Assorted", "Assume", "Assure", "Astonish",
+    "Astonished", "Astonishing", "At all costs", "Attach importance to", "Attached",
+    "Attain", "Attempt", "Attentive", "Attribute", "Authentic", "Authorize", "Available",
+    "Awareness", "Bankrupt", "Barely", "Be characterized by", "Be composed of",
+    "Be engaged in", "Be found in", "Be made up of", "Be marked by", "Be seen in",
+    "Be traced back to", "Become extinct", "Beneficial", "Betray", "Biased", "Bitter",
+    "Bizarre", "Blame for", "Blend", "Blooming", "Blossom", "Blow up", "Blurred",
+    "Bold", "Boldly", "Bond", "Boost", "Bothered", "Bottomless", "Bravely",
+    "Break away from", "Break off", "Break out", "Break out of", "Breath-taking",
+    "Brilliant", "Bring down", "Bring forward", "Bring in", "Bring out", "Bring over",
+    "Bring up", "Bring upon", "Broaden", "Brutal", "Build in", "Bump into",
+    "By definition", "By means of", "By nature", "By no means", "Candid", "Capable",
+    "Casually", "Catch on", "Catch up with", "Cautious", "Centrally", "Certainty",
+    "Certify", "Challenging", "Characterize", "Charge with", "Charming", "Cite",
+    "Civilized", "Clashing", "Clarify", "Classify", "Collective", "Colonize", "Combine",
+    "Come into being", "Come up with", "Command", "Commercial", "Commit", "Commonplace",
+    "Comparable", "Compared with", "Compatible", "Competent", "Complex", "Complicated",
+    "Composed of", "Concentrate", "Concerned", "Conclude", "Conclusive", "Conclusively",
+    "Concrete", "Conduct", "Confident", "Confidently", "Confirm", "Conflict", "Confront",
+    "Confronting", "Confuse", "Confusing", "Conscious", "Consciously", "Conserve",
+    "Consider", "Considerably", "Considerate", "Considerately", "Consistent", "Consist of",
+    "Construct", "Consume", "Contain", "Contemporary", "Continuous", "Continuously",
+    "Contradicting", "Contradictory", "Contrary to", "Contribute", "Controversial",
+    "Conventional", "Convert into", "Convey", "Convincing", "Convincingly", "Cooperate",
+    "Cooperative", "Cope with", "Corrupt", "Countless", "Courageously", "Cowardly",
+    "Cozy", "Creative", "Credible", "Credit", "Deceitful", "Deceitfully", "Deceive",
+    "Decent", "Decently", "Deceptive", "Deceptively", "Decisive", "Decisively", "Decline",
+    "Defeat", "Defectively", "Defence", "Defenceless", "Defiant", "Defiantly", "Deficient",
+    "Deficiently", "Define", "Definite", "Degenerate", "Delude", "Delusively", "Demanding",
+    "Demolish", "Demonstrate", "Densely", "Deny", "Depart", "Depend on", "Dependable",
+    "Dependent on", "Depict", "Deprived of", "Derive", "Descend", "Desert", "Deserve",
+    "Design", "Desire", "Desperately", "Destructive", "Detach", "Detect", "Determined",
+    "Determine", "Devastate", "Devastating", "Devote", "Devoted", "Diagnose", "Dictate",
+    "Differ", "Diminish", "Dire", "Discard", "Discontinued", "Discontinue", "Discover",
+    "Disguise", "Dishonest", "Disintegrate", "Dismiss", "Dismantle", "Disobedient",
+    "Disobediently", "Disorder", "Disparate", "Dispel", "Displace", "Display",
+    "Displeased", "Disposable", "Dispose of", "Disputably", "Dispute", "Disputed",
+    "Disregard", "Disrupt", "Disseminate", "Distant", "Distinct", "Distinctive",
+    "Distinguish", "Distinguished", "Distorted", "Distract", "Distressed", "Distribute",
+    "Distrustfully", "Diverge", "Divergent", "Diverse", "Divine", "Divorce", "Domestic",
+    "Dominate", "Dominant", "Doubtful", "Doubtfully", "Drain", "Dramatic", "Dramatically",
+    "Drastic", "Drastically", "Draw out", "Draw up", "Dreadful", "Dubious", "Dubiously",
+    "Duplicate", "Durable", "Eager", "Economical", "Efficient", "Elaborate", "Elaborately",
+    "Elastic", "Elegant", "Eligible", "Eliminate", "Embarrassing", "Embrace", "Emerge",
+    "Emphasize", "Employ", "Empower", "Enable", "Encounter", "Encourage", "Endanger",
+    "Enforce", "Enforced", "Engulf", "Enhance", "Enlarge", "Enlighten", "Enlist",
+    "Enormous", "Enormously", "Enraged", "Ensuing", "Ensure", "Enthusiastic", "Entitled",
+    "Equally", "Equipped", "Equivalent", "Equivalently", "Escalate", "Essential",
+    "Essentially", "Establish", "Established", "Estimate", "Estrange", "Evacuate",
+    "Evaluate", "Evenly", "Eventually", "Evident", "Evidently", "Evolve", "Evolve into",
+    "Exceed", "Exceeding", "Exceedingly", "Excel", "Exceptional", "Exceptionally",
+    "Exchange ideas", "Exclude", "Execute", "Exhaust", "Exhibit", "Existent", "Exotic",
+    "Expand", "Expanding", "Expel", "Explicit", "Explore", "Expose", "Extended",
+    "Extensive", "Extensively", "Extinguisher", "Extraordinary", "Extravagant", "Extreme",
+    "Extremely", "Fabricated", "Fabulous", "Facilitate", "Factual", "Fade away", "Falsify",
+    "Fanatical", "Far-reaching", "Fascinate", "Fascinating", "Faulty", "Favouring",
+    "Fearsome", "Feature", "Fertile", "Feverish", "Firmly", "Flexible", "Flee",
+    "Flourish", "Flourishing", "Follow up", "For a fraction of", "For the sake of",
+    "Forecast", "Foresight", "Former", "Formerly", "Fortify", "Foster", "Found", "Fragile",
+    "Fragment", "Frank", "Frustrated", "Fruitful", "Fulfill", "Fulfil", "Function",
+    "Fundamental", "Fundamentally", "Gainful", "Gaze at", "Generate", "Genuine", "Gigantic",
+    "Glance at", "Gleaming", "Glimpse", "Glimpse at", "Globally", "Gloomy", "Govern",
+    "Gradual", "Grant", "Grasp", "Grave", "Guarantee", "Guiltless", "Habitual", "Hail",
+    "Harmful", "Harsh", "Harshly", "Hastily", "Hazardous", "Heavenly", "Hesitantly",
+    "Highborn", "Highlight", "Hindering", "Hint", "Horrifying", "Hostile", "Humble",
+    "Humiliating", "Humorous", "Hurriedly", "Identical", "Idle", "Illuminate", "Illustrate",
+    "Imaginative", "Imitation", "Immense", "Immortal", "Impaired", "Imperial", "Imperfectly",
+    "Impressive", "Imprisoned", "In a nutshell", "In abundance", "In accord with",
+    "In accordance with", "In advance", "In alignment with", "In an attempt to",
+    "In an effort to", "In anticipation of", "In charge of", "In collaboration with",
+    "In combination with", "In compliance with", "In conjunction with", "In contact with",
+    "In detail", "In excess of", "In favor of", "In good order", "In isolation",
+    "In line with", "In many respects", "In moderation", "In place of", "In possession of",
+    "In preparation for", "In pursuit of", "In reality", "In recognition of",
+    "In relation to", "In response to", "In search of", "In terms of", "In the context of",
+    "In the course of", "In the face of", "In the name of", "In the wake of",
+    "In touch with", "Inaccessible", "Inadequately", "Inadequate", "Incidental",
+    "Incidentally", "Inclusive", "Inclusively", "Inconsiderate", "Inconsistently",
+    "Incredible", "Incredibly", "Indecisive", "Indecisively", "Independently", "Indicate",
+    "Indifferent", "Indifferently", "Individual", "Inexpensive", "Infinite", "Influential",
+    "Informally", "Inhuman", "Initially", "Inject", "Innocent", "Innovative", "Insane",
+    "Insignificant", "Insincere", "Insistent", "Instantly", "Institute", "Instruct",
+    "Insufficiently", "Insult", "Intended", "Intensely", "Intentional", "Intentionally",
+    "Interfere", "Interpret", "Invaluable", "Invade", "Inventive", "Investigate", "Involve",
+    "Irrelevant", "Irreplaceable", "Irritated", "Isolate", "Isolated", "Joint", "Joyous",
+    "Justifiable", "Justify", "Keen", "Label", "Largely", "Lasting", "Launch", "Leisurely",
+    "Lengthy", "Liable", "Limited", "Locate", "Logical", "Logically", "Long for",
+    "Long-term", "Lucid", "Magnificent", "Magnify", "Maintain", "Malevolent", "Manipulate",
+    "Manufacture", "Marketable", "Mask", "Massive", "Matchless", "Mature", "Mental",
+    "Merciless", "Merge", "Mighty", "Minor", "Mischievous", "Misleading", "Mismatched",
+    "Moderate", "Modest", "Modify", "Monetary", "Mortal", "Motivate", "Mount", "Mounting",
+    "Mutual", "Naive", "Needy", "Neglect", "Neglectfully", "Negligently", "Negotiate",
+    "Neutral", "Noble", "Non-stop", "Notable", "Noteworthy", "Notify", "Null", "Object to",
+    "Objective", "Objectively", "Obscurely", "Observe", "Obtain", "Occupy", "Occur", "Omit",
+    "On behalf of", "On the basis of", "On the grounds of", "Oppressively", "Optimistic",
+    "Originate", "Outline", "Outstanding", "Overcome", "Overlap", "Overlook", "Overpower",
+    "Overrun", "Particularly", "Participate in", "Pave the way for", "Peculiarly",
+    "Perceive", "Perplexed", "Perplexing", "Persist", "Persistent", "Persuade",
+    "Persuasively", "Pessimistic", "Phase out", "Picturesque", "Pin down", "Plausible",
+    "Plentiful", "Plot", "Plunge", "Ponder", "Portable", "Portray", "Pose", "Postpone",
+    "Precise", "Precisely", "Predict", "Preserve", "Pretend", "Prevailing", "Primary",
+    "Prior to", "Proficient", "Profitable", "Progress", "Prohibit", "Project", "Prolonged",
+    "Promote", "Prompt", "Promptly", "Prone", "Proper", "Properly", "Propose", "Prosperous",
+    "Provisionally", "Proximate", "Psychological", "Publish", "Punctual", "Purely",
+    "Pursue", "Puzzled", "Questionable", "Questionably", "Quote", "Raid", "Rational",
+    "Rationalize", "Rebellious", "Recollect", "Recruit", "Redundant", "Refer to", "Refine",
+    "Reflect", "Reform", "Regard", "Regardless of", "Regulate", "Rehearse", "Reinforce",
+    "Reject", "Relate", "Related", "Release", "Relevant", "Reliable", "Reluctantly",
+    "Rely on", "Remark", "Remarkable", "Remote", "Renew", "Renovate", "Renowned", "Repel",
+    "Resemble", "Reside", "Resist", "Resolve", "Respectively", "Rest on", "Restrain",
+    "Restlessly", "Retain", "Retire", "Retreat", "Reverse", "Revise", "Revolutionize",
+    "Rigid", "Roam", "Robust", "Root out", "Ruin", "Ruined", "Rule out", "Rural", "Sack",
+    "Satirical", "Scan", "Scarcely", "Scatter", "Securely", "Seductive", "Seek",
+    "Seemingly", "Seize", "Sensibly", "Sensitive", "Sentenced", "Sequential", "Sequentially",
+    "Severe", "Severely", "Shallow", "Shameful", "Shatter", "Shed light on", "Shield",
+    "Shift", "Shoulder", "Showy", "Shrinking", "Significant", "Significantly", "Signify",
+    "Simulate", "Sincerely", "Single-mindedly", "Skilled", "Slight", "Slightly", "Sluggish",
+    "Sluggishly", "Soaring", "Solely", "Sophisticated", "Spark", "Specifically", "Specify",
+    "Spectacular", "Speculate", "Stable", "Standardize", "Stark", "Startled", "Steep",
+    "Stem from", "Stern", "Stimulate", "Strenuous", "Strengthen", "Stress", "Striking",
+    "Struggle", "Stubbornly", "Stunning", "Subject to", "Submerge", "Submit", "Subsequent",
+    "Subsequently", "Substantial", "Substantially", "Substitute", "Successive",
+    "Successively", "Sufficient", "Suitably", "Summarize", "Superior", "Supervise",
+    "Supplement", "Susceptible", "Suspend", "Sustainable", "Sustain", "Swift", "Symbolic",
+    "Symbolize", "Sympathetic", "Synonymous", "Tackle", "Tactfully", "Tangible",
+    "Tear apart", "Tentative", "Tentatively", "Terminate", "Terrifying", "Thorough",
+    "Thoroughly", "Thoughtful", "Thoughtfully", "Thoughtless", "Thrive", "Thriving",
+    "To a certain degree", "To a large extent", "To this end", "Tolerate", "Torture",
+    "Toughen", "Trace", "Traditional", "Transform", "Transmit", "Tremendous", "Trigger",
+    "Typical", "Typically", "Ultimate", "Ultimately", "Unanimous", "Unanimously",
+    "Unavoidably", "Unclearly", "Unconcernedly", "Under no circumstances", "Under pressure",
+    "Undergo", "Underline", "Undermine", "Undertake", "Unequally", "Unevenly",
+    "Unfavourably", "Unify", "Unintentionally", "Uninterestedly", "Unite", "Universal",
+    "Universally", "Unmask", "Unresponsive", "Unusually", "Unwillingly", "Uphold", "Urge",
+    "Urgent", "Urgently", "Utilize", "Vacant", "Vague", "Valid", "Validate", "Valuable",
+    "Vanish", "Varied", "Various", "Vary", "Vast", "Verify", "Versatile", "Vibrant",
+    "Vigorous", "Vigorously", "Violently", "Visible", "Visualize", "Void", "Voluntary",
+    "Voluntarily", "Vulnerable", "Wander", "Warrant", "Weighty", "Wicked", "Widespread",
+    "Widely", "Willingly", "With reference to", "With regard to", "With the exception of",
+    "With the help of", "With the intention of", "Worldly", "Worsen", "Worrisome",
+    "Yearn for", "Yield", "Abbreviate", "Abound", "Acclaimed", "Acute", "Adamantly",
+    "Adhere to", "Adherent", "Administer", "Adverse", "Adversely", "Affluent", "Affluently",
+    "Aggravate", "Agitated", "Akin to", "Allege", "Alleviate", "Allocate", "Alluring",
+    "Ambiguous", "Amplify", "Ample", "Annex", "Annihilate", "Antagonistic", "Antecedent",
+    "Apprehensive", "Apt to", "Arable", "Arbitrary", "Arbitrarily", "Archaic", "Arduous",
+    "Arid", "Ascertain", "Aspire", "Assert", "Assertive", "Assuredly", "At odds with",
+    "At the expense of", "Augment", "Austere", "Autonomous", "Autonomously", "Avert",
+    "Avid", "Barren", "Belligerent", "Benign", "Bewildering", "Boundless", "Boundlessly",
+    "By and large", "Cast light on", "Catastrophic", "Cease", "Celestial", "Chiefly",
+    "Cognitive", "Coincide", "Come to terms with", "Commence", "Communal", "Compactly",
+    "Compassionate", "Compel", "Compelling", "Complement", "Comply with", "Comprehend",
+    "Comprehensive", "Comprehensively", "Comprise", "Conceal", "Concede", "Conceive",
+    "Concise", "Concisely", "Concur", "Confer", "Conjunction", "Conscience",
+    "Conscientiously", "Consecutive", "Consecutively", "Consent", "Constitute",
+    "Convict of", "Convicted", "Copious", "Correspondingly", "Counterfeit", "Courteous",
+    "Courteously", "Crave", "Culprit", "Curb", "Curtail", "Customary", "Cynical",
+    "Deduce", "Deduce from", "Deem", "Deter", "Deteriorate", "Detrimental", "Deviate",
+    "Devise", "Disclose", "Discriminate", "Dwell", "Embark on", "Emit", "Empirical",
+    "Enact", "Encompass", "Endemic", "Endorse", "Endure", "Engender", "Entail",
+    "Envisage", "Equivocal", "Erect", "Evoke", "Exemplify", "Expend", "Exploit",
+    "Extraterrestrial", "Fabricate", "Halt", "Hampering", "Haphazard", "Hard-headed",
+    "Harmonious", "Harmoniously", "Harness", "Hasten", "Heartening", "Hereditary",
+    "Hinder", "Hypothesize", "Ignite", "Illegitimate", "Illicit", "Illustrious",
+    "Imminent", "Impartial", "Impartially", "Imperative", "Imperatively", "Implicit",
+    "Imply", "Impose", "Impoverished", "Improbable", "Inborn", "Incalculable",
+    "Incessantly", "Incoherent", "Incompatible", "Indefinitely", "Indigenous", "Indignant",
+    "Indisputable", "Indispensable", "Inevitable", "Inevitably", "Infeasible", "Infamous",
+    "Infer", "Ingenious", "Inherent", "Inhibit", "Inhospitable", "Initiate", "Innate",
+    "Inquire", "Instigate", "Instinctive", "Insubordinately", "Intact", "Intangible",
+    "Intensional", "Interim", "Intervene", "Intricate", "Intrinsic", "Intuitive",
+    "Invalidate", "Jubilant", "Laborious", "Lavish", "Legitimate", "Lucrative", "Luminous",
+    "Lush", "Malignant", "Malleable", "Maltreat", "Mandate", "Mandatory", "Manifest",
+    "Meagre", "Meagrely", "Meditative", "Meticulous", "Miscellaneous", "Mitigate",
+    "Monumental", "Monumentally", "Negligible", "Notional", "Notorious", "Nullify",
+    "Oblique", "Oblige", "Obligatory", "Obscure", "Obsolete", "Obstinate", "Obstinately",
+    "Obstruct", "Obstructive", "Opaque", "Oppress", "Ostentatious", "Outmoded",
+    "Overwhelming", "Overwhelmingly", "Paramount", "Pensively", "Perilous", "Perplex",
+    "Perpetual", "Perpetually", "Phenomenally", "Plummet", "Precede", "Preceding",
+    "Predate", "Predominantly", "Premeditated", "Prerequisite", "Presume", "Pretentious",
+    "Prevalent", "Primal", "Primarily", "Primeval", "Primitive", "Principal", "Principally",
+    "Proclaim", "Procrastinate", "Profound", "Profoundly", "Prolific", "Prominent",
+    "Prosecute", "Provoke", "Radically", "Ratify", "Recede", "Recurrent", "Regal",
+    "Render", "Renounce", "Repeal", "Resent", "Resilient", "Resolute", "Resolutely",
+    "Retard", "Ruthless", "Scanty", "Sceptically", "Scornful", "Scrupulous", "Scrutinize",
+    "Subjective", "Subtle", "Supplant", "Suppress", "Surpass", "Unearth", "Unparalleled",
+    "Unravel", "Unrivalled", "Utterly"
+];
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Configuration
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const CONFIG = {
+    model: 'mistralai/ministral-8b',
+    temperature: 0.8,
+    maxTokens: 768,
+    
+    apiTimeout: 30000,
+    retryAttempts: 3,
+    retryDelay: 1000,
+    debounceDelay: 300,
+    
+    circuitBreakerThreshold: 5,
+    circuitBreakerTimeout: 60000,
+    
+    maxSentenceLength: 300,
+    maxOptionLength: 60,
+    maxExplanationLength: 200,
+    
+    getPrompt: function(word) {
+        const startTime = performance.now();
+        console.log(`[Config] Generating prompt for word: "${word}"`);
+        
+        if (!word || typeof word !== 'string') {
+            throw new Error('Invalid word provided to prompt generator');
+        }
+        
+        const sanitizedWord = word
+            .replace(/\\/g, '\\\\')
+            .replace(/"/g, '\\"')
+            .substring(0, 100);
+            
+        const isMultiWord = sanitizedWord.includes(' ');
+        const typeHint = isMultiWord
+            ? `IMPORTANT: "${sanitizedWord}" is a multi-word expression. ALL 5 options must be multi-word expressions of the same type (e.g., all phrasal verbs, all prepositional phrases, or all connectors). Do NOT mix single words with multi-word expressions.`
+            : '';
+
+        return `You are an academic English instructor. Create ONE fill-in-the-blank question.
+
+The correct answer MUST be: "${sanitizedWord}"
+
+${typeHint}
+
+CRITICAL: Vary the sentence context based on the word's meaning. Do NOT default to "research study" contexts. Choose contexts that match the word's natural usage:
+- For nature/environment words: use environmental, seasonal, or ecological contexts
+- For business/economic words: use corporate, financial, or market contexts  
+- For social/emotional words: use interpersonal, psychological, or societal contexts
+- For technical words: use technological, scientific, or mechanical contexts
+- For abstract/conceptual words: use philosophical, theoretical, or analytical contexts
+
+Requirements:
+- Write a concise sentence (15-25 words) with rich context where "${sanitizedWord}" is the ONLY natural fit in the blank _____
+- The sentence MUST be complete - do not cut off or truncate the ending
+- Be concise but specific - include only essential context clues that make the correct choice unambiguous
+- The sentence should feel authentic to academic writing (research papers, essays, lectures, or formal discussions)
+- Provide exactly 5 options including "${sanitizedWord}" - all options must be the same grammatical type
+- "${sanitizedWord}" must be the correct answer (index 0)
+- Other 4 options should be plausible distractors that would NOT fit naturally given the specific context
+- For EACH option, provide a clear explanation (1-2 complete sentences) why it is correct or wrong
+
+Respond with JSON only:
+{
+  "sentence": "Your contextually appropriate sentence here with _____ for the blank",
+  "options": ["${sanitizedWord}", "distractor1", "distractor2", "distractor3", "distractor4"],
+  "correctIndex": 0,
+  "explanations": [
+    "'${sanitizedWord}' fits because it matches the context of _____.",
+    "'Distractor1' is wrong because it means _____, not _____.",
+    "'Distractor2' is wrong because it refers to _____, not _____.",
+    "'Distractor3' is wrong because it describes _____, not _____.",
+    "'Distractor4' is wrong because it implies _____, not _____."
+  ]
+}`;
+    }
+};
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Application State Management
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const AppState = {
+    correct: 0,
+    total: 0,
+    currentQuestion: null,
+    prefetched: null,
+    isFirstQuestion: true,
+    questionCount: 0,
+    abortController: null,
+    isLoading: false,
+    prefetchPromise: null,
+    consecutiveFailures: 0,
+    circuitOpenUntil: 0,
+    lastButtonClick: 0,
+    hasAnswered: false,
+    
+    reset() {
+        this.correct = 0;
+        this.total = 0;
+        this.currentQuestion = null;
+        this.prefetched = null;
+        this.isFirstQuestion = true;
+        this.hasAnswered = false;
+        this.questionCount = 0;
+    },
+    
+    cancelPendingRequests() {
+        if (this.abortController) {
+            this.abortController.abort();
+            this.abortController = null;
+        }
+    }
+};
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Utility Functions
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+function sanitizeHtml(text) {
+    if (typeof text !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function validateQuestion(data) {
+    if (!data || typeof data !== 'object') {
+        throw new Error('Invalid question data: not an object');
+    }
+    if (typeof data.sentence !== 'string' || !data.sentence.trim()) {
+        throw new Error('Invalid question: missing or empty sentence');
+    }
+    if (!Array.isArray(data.options) || data.options.length !== 5) {
+        throw new Error('Invalid question: options must be an array of 5 items');
+    }
+    if (typeof data.correctIndex !== 'number' || data.correctIndex < 0 || data.correctIndex > 4) {
+        throw new Error('Invalid question: correctIndex must be 0-4');
+    }
+    for (let i = 0; i < data.options.length; i++) {
+        if (typeof data.options[i] !== 'string') {
+            throw new Error(`Invalid question: option ${i} is not a string`);
+        }
+    }
+    if (data.explanations && !Array.isArray(data.explanations)) {
+        throw new Error('Invalid question: explanations must be an array');
+    }
+    if (data.sentence.length > CONFIG.maxSentenceLength) {
+        const truncated = data.sentence.substring(0, CONFIG.maxSentenceLength);
+        const lastSpace = truncated.lastIndexOf(' ');
+        data.sentence = lastSpace > 0 ? truncated.substring(0, lastSpace) + '...' : truncated + '...';
+    }
+    data.options = data.options.map(opt => 
+        opt.length > CONFIG.maxOptionLength ? opt.substring(0, CONFIG.maxOptionLength) + '...' : opt
+    );
+    if (data.explanations && Array.isArray(data.explanations)) {
+        data.explanations = data.explanations.map(exp => {
+            if (typeof exp !== 'string' || exp.length <= CONFIG.maxExplanationLength) {
+                return exp;
+            }
+            const truncated = exp.substring(0, CONFIG.maxExplanationLength);
+            const sentenceEnd = truncated.search(/[.!?](?!.*[.!?])/);
+            if (sentenceEnd > 50) {
+                return truncated.substring(0, sentenceEnd + 1);
+            }
+            const lastSpace = truncated.lastIndexOf(' ');
+            if (lastSpace > 50) {
+                return truncated.substring(0, lastSpace);
+            }
+            return truncated + '...';
+        });
+    }
+    return true;
+}
+
+function debounce(fn, delay) {
+    let timeoutId;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
+
+function checkRateLimit() {
+    const now = Date.now();
+    if (now - AppState.lastButtonClick < CONFIG.debounceDelay) {
+        return false;
+    }
+    AppState.lastButtonClick = now;
+    return true;
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function isCircuitOpen() {
+    if (AppState.consecutiveFailures >= CONFIG.circuitBreakerThreshold) {
+        if (Date.now() < AppState.circuitOpenUntil) {
+            return true;
+        }
+        AppState.consecutiveFailures = 0;
+    }
+    return false;
+}
+
+function recordSuccess() {
+    AppState.consecutiveFailures = 0;
+}
+
+function recordFailure() {
+    AppState.consecutiveFailures++;
+    if (AppState.consecutiveFailures >= CONFIG.circuitBreakerThreshold) {
+        AppState.circuitOpenUntil = Date.now() + CONFIG.circuitBreakerTimeout;
+    }
+}
+
+const $ = id => document.getElementById(id);
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - API Functions
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const API_CONFIG = {
+    endpoint: 'https://thunder.yds.today/.netlify/functions/generate-question',
+    timeout: { wifi: 30000, cellular: 60000 }
+};
+
+function detectConnectionType() {
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        if (connection.type === 'cellular' || connection.effectiveType === '2g' || connection.effectiveType === '3g') {
+            return 'cellular';
+        }
+    }
+    return navigator.onLine ? 'wifi' : 'offline';
+}
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = null) {
+    const connectionType = detectConnectionType();
+    const actualTimeout = timeoutMs || API_CONFIG.timeout[connectionType] || CONFIG.apiTimeout;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), actualTimeout);
+    
+    try {
+        const response = await fetch(url, { ...options, signal: controller.signal });
+        clearTimeout(timeoutId);
+        return response;
+    } catch (error) {
+        clearTimeout(timeoutId);
+        if (error.name === 'AbortError') {
+            throw new Error('Request timed out. Please check your connection.');
+        }
+        throw error;
+    }
+}
+
+async function generateQuestion(attempt = 1) {
+    if (isCircuitOpen()) {
+        const waitSeconds = Math.ceil((AppState.circuitOpenUntil - Date.now()) / 1000);
+        throw new Error(`Too many failures. Please wait ${waitSeconds} seconds before trying again.`);
+    }
+    if (!navigator.onLine) {
+        throw new Error('You\'re offline. Please check your internet connection.');
+    }
+    if (!Array.isArray(MYWORDS) || MYWORDS.length === 0) {
+        throw new Error('Word list is not available.');
+    }
+    
+    const word = MYWORDS[Math.floor(Math.random() * MYWORDS.length)];
+    const prompt = CONFIG.getPrompt(word);
+    
+    try {
+        const response = await fetchWithTimeout(API_CONFIG.endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt })
+        });
+        
+        if (!response.ok) {
+            let errorMessage = `Server error (${response.status})`;
+            switch (response.status) {
+                case 400: errorMessage = 'Invalid request. Please try again.'; break;
+                case 401: errorMessage = 'Authentication failed. Please contact support.'; break;
+                case 404: errorMessage = 'Question service not found. Please try again later.'; break;
+                case 429: errorMessage = 'Too many requests. Please wait a moment.'; break;
+                case 500: case 502: case 503: case 504: errorMessage = 'Server is busy. Please try again in a moment.'; break;
+            }
+            throw new Error(errorMessage);
+        }
+        
+        const data = await response.json();
+        if (!data?.choices?.[0]?.message?.content) {
+            throw new Error('Invalid response format from AI service');
+        }
+        
+        const text = data.choices[0].message.content;
+        let question;
+        const parseErrors = [];
+        
+        try {
+            question = JSON.parse(text);
+        } catch (e) {
+            parseErrors.push(e.message);
+            try {
+                const cleaned = text.replace(/[\x00-\x1F\x7F]/g, ' ');
+                question = JSON.parse(cleaned);
+            } catch (e2) {
+                parseErrors.push(e2.message);
+                try {
+                    const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+                    if (jsonMatch) {
+                        question = JSON.parse(jsonMatch[1].trim());
+                    } else {
+                        const objMatch = text.match(/\{[\s\S]*"sentence"[\s\S]*"options"[\s\S]*\}/);
+                        if (objMatch) {
+                            question = JSON.parse(objMatch[0]);
+                        } else {
+                            throw new Error('Could not parse question data');
+                        }
+                    }
+                } catch (e3) {
+                    throw new Error('Could not parse question data after multiple attempts');
+                }
+            }
+        }
+        
+        validateQuestion(question);
+        recordSuccess();
+        return question;
+        
+    } catch (error) {
+        const isRetryable = error.message.includes('timeout') || error.message.includes('network') || 
+                           error.message.includes('busy') || error.message.includes('Server error');
+        if (isRetryable && attempt < CONFIG.retryAttempts) {
+            const delay = CONFIG.retryDelay * Math.pow(2, attempt - 1);
+            await sleep(delay);
+            return generateQuestion(attempt + 1);
+        }
+        recordFailure();
+        throw error;
+    }
+}
+
+async function prefetchQuestion() {
+    if (AppState.prefetched || AppState.prefetchPromise) return;
+    
+    AppState.prefetchPromise = generateQuestion()
+        .then(question => {
+            AppState.prefetched = question;
+            AppState.prefetchPromise = null;
+        })
+        .catch(() => {
+            AppState.prefetchPromise = null;
+        });
+    
+    return AppState.prefetchPromise;
+}
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Streak System
+   Tracks daily study streaks separately for Quiz and Flashcard modes
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const NativeStorage = {
+    isAvailable() {
+        return !!(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.nativeStorage);
+    },
+    
+    async save(key, value) {
+        return new Promise((resolve) => {
+            if (!this.isAvailable()) {
+                try { localStorage.setItem(key, value); resolve(true); } catch (e) { resolve(false); }
+                return;
+            }
+            const callbackId = 'native_save_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            window[callbackId] = (success) => { cleanup(); resolve(success === true); };
+            const cleanup = () => delete window[callbackId];
+            try {
+                window.webkit.messageHandlers.nativeStorage.postMessage({ action: 'save', key, value: String(value), callback: callbackId });
+            } catch (e) { cleanup(); resolve(false); return; }
+            setTimeout(() => { if (window[callbackId]) { cleanup(); resolve(false); } }, 2000);
+        });
+    },
+    
+    async load(key) {
+        return new Promise((resolve) => {
+            if (!this.isAvailable()) {
+                try { resolve(localStorage.getItem(key) || ''); } catch (e) { resolve(''); }
+                return;
+            }
+            const callbackId = 'native_load_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            window[callbackId] = (value) => { cleanup(); resolve(value || ''); };
+            const cleanup = () => delete window[callbackId];
+            try {
+                window.webkit.messageHandlers.nativeStorage.postMessage({ action: 'load', key, callback: callbackId });
+            } catch (e) { cleanup(); resolve(''); return; }
+            setTimeout(() => { if (window[callbackId]) { cleanup(); resolve(''); } }, 2000);
+        });
+    },
+    
+    async loadAll() {
+        return new Promise((resolve) => {
+            if (!this.isAvailable()) {
+                const data = {};
+                try {
+                    for (const key of Object.values(STREAK_CONFIG.storageKeys)) {
+                        const value = localStorage.getItem(key);
+                        if (value !== null) data[key] = value;
+                    }
+                } catch (e) {}
+                resolve(data);
+                return;
+            }
+            const callbackId = 'native_loadall_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            window[callbackId] = (data) => { cleanup(); resolve(data || {}); };
+            const cleanup = () => delete window[callbackId];
+            try {
+                window.webkit.messageHandlers.nativeStorage.postMessage({ action: 'loadAll', callback: callbackId });
+            } catch (e) { cleanup(); resolve({}); return; }
+            setTimeout(() => { if (window[callbackId]) { cleanup(); resolve({}); } }, 2000);
+        });
+    },
+    
+    async clear() {
+        if (this.isAvailable()) {
+            try { window.webkit.messageHandlers.nativeStorage.postMessage({ action: 'clear' }); } catch (e) {}
+        }
+        try {
+            for (const key of Object.values(STREAK_CONFIG.storageKeys)) {
+                localStorage.removeItem(key);
+            }
+        } catch (e) {}
+    }
+};
+
+const STREAK_CONFIG = {
+    wordsPerStreak: 20,
+    storageKeys: {
+        quizStreak: 'yds_quiz_streak',
+        flashcardStreak: 'yds_flashcard_streak',
+        quizProgress: 'yds_quiz_progress',
+        flashcardProgress: 'yds_flashcard_progress',
+        lastStudyDate: 'yds_last_study_date',
+        quizCompletedToday: 'yds_quiz_completed_today',
+        flashcardCompletedToday: 'yds_flashcard_completed_today'
+    }
+};
+
+const StreakState = {
+    quizStreak: 0,
+    flashcardStreak: 0,
+    quizProgress: 0,
+    flashcardProgress: 0,
+    quizCompletedToday: false,
+    flashcardCompletedToday: false,
+    lastStudyDate: null,
+    onStreakComplete: null,
+    _pendingSaves: 0,
+    
+    async init() {
+        await this.loadFromStorage();
+        this.checkDateReset();
+        this._setupAutoSave();
+    },
+    
+    _setupAutoSave() {
+        document.addEventListener('visibilitychange', () => { if (document.hidden) this.saveToStorage(); });
+        window.addEventListener('beforeunload', () => this.saveToStorage());
+    },
+    
+    async loadFromStorage() {
+        try {
+            const data = await NativeStorage.loadAll();
+            this.quizStreak = parseInt(data[STREAK_CONFIG.storageKeys.quizStreak]) || 0;
+            this.flashcardStreak = parseInt(data[STREAK_CONFIG.storageKeys.flashcardStreak]) || 0;
+            this.quizProgress = parseInt(data[STREAK_CONFIG.storageKeys.quizProgress]) || 0;
+            this.flashcardProgress = parseInt(data[STREAK_CONFIG.storageKeys.flashcardProgress]) || 0;
+            this.lastStudyDate = data[STREAK_CONFIG.storageKeys.lastStudyDate] || null;
+            this.quizCompletedToday = data[STREAK_CONFIG.storageKeys.quizCompletedToday] === 'true';
+            this.flashcardCompletedToday = data[STREAK_CONFIG.storageKeys.flashcardCompletedToday] === 'true';
+        } catch (e) {
+            this.reset();
+        }
+    },
+    
+    async saveToStorage() {
+        this._pendingSaves++;
+        const currentSave = this._pendingSaves;
+        try {
+            const saves = [
+                NativeStorage.save(STREAK_CONFIG.storageKeys.quizStreak, this.quizStreak.toString()),
+                NativeStorage.save(STREAK_CONFIG.storageKeys.flashcardStreak, this.flashcardStreak.toString()),
+                NativeStorage.save(STREAK_CONFIG.storageKeys.quizProgress, this.quizProgress.toString()),
+                NativeStorage.save(STREAK_CONFIG.storageKeys.flashcardProgress, this.flashcardProgress.toString()),
+                NativeStorage.save(STREAK_CONFIG.storageKeys.lastStudyDate, this.lastStudyDate || ''),
+                NativeStorage.save(STREAK_CONFIG.storageKeys.quizCompletedToday, this.quizCompletedToday.toString()),
+                NativeStorage.save(STREAK_CONFIG.storageKeys.flashcardCompletedToday, this.flashcardCompletedToday.toString())
+            ];
+            await Promise.all(saves);
+        } catch (e) {}
+    },
+    
+    checkDateReset() {
+        const today = getTodayDateString();
+        if (this.lastStudyDate !== today) {
+            const yesterday = getYesterdayDateString();
+            if (this.lastStudyDate !== yesterday && this.lastStudyDate !== null) {
+                if (!this.quizCompletedToday) this.quizStreak = 0;
+                if (!this.flashcardCompletedToday) this.flashcardStreak = 0;
+            }
+            this.quizProgress = 0;
+            this.flashcardProgress = 0;
+            this.quizCompletedToday = false;
+            this.flashcardCompletedToday = false;
+            this.lastStudyDate = today;
+            this.saveToStorage();
+        }
+    },
+    
+    recordQuizWord() {
+        this.checkDateReset();
+        if (this.quizCompletedToday) {
+            return { completed: true, progress: this.quizProgress, total: STREAK_CONFIG.wordsPerStreak, streak: this.quizStreak, justCompleted: false };
+        }
+        this.quizProgress++;
+        if (this.quizProgress >= STREAK_CONFIG.wordsPerStreak) {
+            this.quizCompletedToday = true;
+            this.quizStreak++;
+            this.saveToStorage();
+            const status = { completed: true, progress: this.quizProgress, total: STREAK_CONFIG.wordsPerStreak, streak: this.quizStreak, justCompleted: true, mode: 'quiz' };
+            if (this.onStreakComplete) this.onStreakComplete(status);
+            return status;
+        }
+        this.saveToStorage();
+        return { completed: false, progress: this.quizProgress, total: STREAK_CONFIG.wordsPerStreak, streak: this.quizStreak, justCompleted: false, mode: 'quiz' };
+    },
+    
+    recordFlashcardWord() {
+        this.checkDateReset();
+        if (this.flashcardCompletedToday) {
+            return { completed: true, progress: this.flashcardProgress, total: STREAK_CONFIG.wordsPerStreak, streak: this.flashcardStreak, justCompleted: false };
+        }
+        this.flashcardProgress++;
+        if (this.flashcardProgress >= STREAK_CONFIG.wordsPerStreak) {
+            this.flashcardCompletedToday = true;
+            this.flashcardStreak++;
+            this.saveToStorage();
+            const status = { completed: true, progress: this.flashcardProgress, total: STREAK_CONFIG.wordsPerStreak, streak: this.flashcardStreak, justCompleted: true, mode: 'flashcard' };
+            if (this.onStreakComplete) this.onStreakComplete(status);
+            return status;
+        }
+        this.saveToStorage();
+        return { completed: false, progress: this.flashcardProgress, total: STREAK_CONFIG.wordsPerStreak, streak: this.flashcardStreak, justCompleted: false, mode: 'flashcard' };
+    },
+    
+    getStatus() {
+        this.checkDateReset();
+        return {
+            quiz: { streak: this.quizStreak, progress: this.quizProgress, total: STREAK_CONFIG.wordsPerStreak, completed: this.quizCompletedToday, remaining: Math.max(0, STREAK_CONFIG.wordsPerStreak - this.quizProgress) },
+            flashcard: { streak: this.flashcardStreak, progress: this.flashcardProgress, total: STREAK_CONFIG.wordsPerStreak, completed: this.flashcardCompletedToday, remaining: Math.max(0, STREAK_CONFIG.wordsPerStreak - this.flashcardProgress) }
+        };
+    },
+    
+    getWelcomeDisplayStatus() {
+        this.checkDateReset();
+        return {
+            quiz: { streak: this.quizStreak, completed: this.quizCompletedToday, progress: this.quizProgress, total: STREAK_CONFIG.wordsPerStreak },
+            flashcard: { streak: this.flashcardStreak, completed: this.flashcardCompletedToday, progress: this.flashcardProgress, total: STREAK_CONFIG.wordsPerStreak }
+        };
+    },
+    
+    async reset() {
+        this.quizStreak = 0;
+        this.flashcardStreak = 0;
+        this.quizProgress = 0;
+        this.flashcardProgress = 0;
+        this.quizCompletedToday = false;
+        this.flashcardCompletedToday = false;
+        this.lastStudyDate = null;
+        await NativeStorage.clear();
+    },
+    
+    setStreakCompleteCallback(callback) {
+        this.onStreakComplete = callback;
+    }
+};
+
+function getTodayDateString() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+}
+
+function getYesterdayDateString() {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    return `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+}
+
+function updateStreakBadges() {
+    const status = StreakState.getWelcomeDisplayStatus();
+    
+    const quizBadge = document.getElementById('quizStreakBadge');
+    if (quizBadge) {
+        const quizText = document.getElementById('quizStreakText');
+        if (status.quiz.completed) {
+            quizBadge.classList.add('completed');
+            quizBadge.classList.remove('in-progress');
+            if (quizText) quizText.textContent = `${status.quiz.streak} 🔥`;
+        } else if (status.quiz.progress > 0) {
+            quizBadge.classList.add('in-progress');
+            quizBadge.classList.remove('completed');
+            if (quizText) quizText.textContent = `${status.quiz.progress}/${STREAK_CONFIG.wordsPerStreak}`;
+        } else {
+            quizBadge.classList.remove('completed', 'in-progress');
+            if (quizText) quizText.textContent = `${status.quiz.streak} 🔥`;
+        }
+    }
+    
+    const flashcardBadge = document.getElementById('flashcardStreakBadge');
+    if (flashcardBadge) {
+        const flashcardText = document.getElementById('flashcardStreakText');
+        if (status.flashcard.completed) {
+            flashcardBadge.classList.add('completed');
+            flashcardBadge.classList.remove('in-progress');
+            if (flashcardText) flashcardText.textContent = `${status.flashcard.streak} 🔥`;
+        } else if (status.flashcard.progress > 0) {
+            flashcardBadge.classList.add('in-progress');
+            flashcardBadge.classList.remove('completed');
+            if (flashcardText) flashcardText.textContent = `${status.flashcard.progress}/${STREAK_CONFIG.wordsPerStreak}`;
+        } else {
+            flashcardBadge.classList.remove('completed', 'in-progress');
+            if (flashcardText) flashcardText.textContent = `${status.flashcard.streak} 🔥`;
+        }
+    }
+}
+
+function updateActiveStreakDisplay(mode) {
+    const status = StreakState.getStatus();
+    const modeStatus = mode === 'quiz' ? status.quiz : status.flashcard;
+    const container = document.getElementById(mode === 'quiz' ? 'quizStreakDisplay' : 'flashcardStreakDisplay');
+    if (!container) return;
+    
+    const progressBar = container.querySelector('.streak-progress-bar');
+    const progressText = container.querySelector('.streak-progress-text');
+    const streakCount = container.querySelector('.streak-count');
+    
+    if (progressBar) {
+        const percentage = (modeStatus.progress / STREAK_CONFIG.wordsPerStreak) * 100;
+        progressBar.style.width = `${Math.min(100, percentage)}%`;
+    }
+    if (progressText) {
+        progressText.textContent = modeStatus.completed ? 'Streak Complete! 🔥' : `${modeStatus.progress}/${STREAK_CONFIG.wordsPerStreak} words`;
+    }
+    if (streakCount) {
+        streakCount.textContent = `${modeStatus.streak} day${modeStatus.streak !== 1 ? 's' : ''}`;
+    }
+}
+
+function showStreakCelebration(status) {
+    const modeName = status.mode === 'quiz' ? 'Quiz' : 'Flashcards';
+    const message = `🔥 ${modeName} Streak: ${status.streak} day${status.streak !== 1 ? 's' : ''}!`;
+    if (typeof showNotification === 'function') {
+        showNotification('success', message, 5000);
+    }
+    const container = document.getElementById(status.mode === 'quiz' ? 'appPage' : 'flashcardPage');
+    if (container) {
+        container.classList.add('streak-celebration');
+        setTimeout(() => container.classList.remove('streak-celebration'), 1000);
+    }
+}
+
+async function initStreak() {
+    await StreakState.init();
+    StreakState.setStreakCompleteCallback(showStreakCelebration);
+    updateStreakBadges();
+}
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Tinder-Style Flashcard Study Mode
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const FlashcardState = {
+    currentIndex: 0,
+    shuffledWords: [],
+    knownCount: 0,
+    totalCount: 0,
+    isAnimating: false,
+    currentDefinition: null,
+    currentExample: null,
+    prefetchedContent: null,
+    prefetchPromise: null,
+    nextWordIndex: null,
+    
+    reset() {
+        this.currentIndex = 0;
+        this.shuffledWords = [];
+        this.knownCount = 0;
+        this.totalCount = 0;
+        this.isAnimating = false;
+        this.currentDefinition = null;
+        this.currentExample = null;
+        this.prefetchedContent = null;
+        this.prefetchPromise = null;
+        this.nextWordIndex = null;
+    },
+    
+    shuffleWords() {
+        if (!Array.isArray(MYWORDS) || MYWORDS.length === 0) return [];
+        this.shuffledWords = [...MYWORDS];
+        for (let i = this.shuffledWords.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.shuffledWords[i], this.shuffledWords[j]] = [this.shuffledWords[j], this.shuffledWords[i]];
+        }
+        this.currentIndex = 0;
+        return this.shuffledWords;
+    },
+    
+    reshuffleAndContinue() {
+        this.shuffleWords();
+    }
+};
+
+const FlashcardDOM = {
+    get flashcardPage() { return $('flashcardPage'); },
+    get flashcardContainer() { return $('flashcardContainer'); },
+    get flashcardCard() { return $('flashcardCard'); },
+    get flashcardWord() { return $('flashcardWord'); },
+    get flashcardDefinition() { return $('flashcardDefinition'); },
+    get flashcardExample() { return $('flashcardExample'); },
+    get flashcardScore() { return $('flashcardScore'); },
+    get btnFlashcardBack() { return $('btnFlashcardBack'); },
+    get btnDontKnow() { return $('btnDontKnow'); },
+    get btnKnow() { return $('btnKnow'); },
+    get modeSelection() { return $('modeSelection'); },
+    get btnModeQuiz() { return $('btnModeQuiz'); },
+    get btnModeFlashcard() { return $('btnModeFlashcard'); }
+};
+
+async function generateFlashcardContent(word) {
+    if (isCircuitOpen()) {
+        const waitSeconds = Math.ceil((AppState.circuitOpenUntil - Date.now()) / 1000);
+        throw new Error(`Too many failures. Please wait ${waitSeconds} seconds.`);
+    }
+    if (!navigator.onLine) {
+        throw new Error('You\'re offline. Please check your internet connection.');
+    }
+    
+    const prompt = `For the English word/phrase "${word}" (commonly used in academic/YDS exam contexts), provide:
+1. A clear, concise definition suitable for English language learners
+2. One academic-style example sentence showing natural usage
+
+Respond ONLY in this exact JSON format:
+{
+  "definition": "brief definition here",
+  "example": "Example sentence here."
+}
+
+Keep the definition under 20 words. The example should be academic/formal in tone.`;
+
+    try {
+        const response = await fetchWithTimeout(API_CONFIG.endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt })
+        });
+        
+        if (!response.ok) throw new Error(`Server error (${response.status})`);
+        const data = await response.json();
+        if (!data?.choices?.[0]?.message?.content) throw new Error('Invalid response format');
+        
+        const text = data.choices[0].message.content;
+        let content;
+        try {
+            content = JSON.parse(text);
+        } catch (e) {
+            const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+            if (jsonMatch) {
+                content = JSON.parse(jsonMatch[1].trim());
+            } else {
+                const objMatch = text.match(/\{[\s\S]*"definition"[\s\S]*"example"[\s\S]*\}/);
+                if (objMatch) content = JSON.parse(objMatch[0]);
+                else throw new Error('Could not parse flashcard content');
+            }
+        }
+        if (!content.definition || !content.example) throw new Error('Missing definition or example');
+        content.example = content.example.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1');
+        recordSuccess();
+        return content;
+    } catch (error) {
+        recordFailure();
+        throw error;
+    }
+}
+
+async function startFlashcardMode() {
+    if (!Array.isArray(MYWORDS) || MYWORDS.length === 0) {
+        showNotification('error', 'Word list is not available.');
+        return;
+    }
+    
+    const hasPrefetched = FlashcardState.prefetchedContent && FlashcardState.nextWordIndex === 0;
+    if (!hasPrefetched) {
+        FlashcardState.reset();
+        FlashcardState.shuffleWords();
+    }
+    
+    if (DOM.welcomePage) DOM.welcomePage.classList.remove('active');
+    if (FlashcardDOM.flashcardPage) FlashcardDOM.flashcardPage.classList.add('active');
+    if (typeof updateActiveStreakDisplay === 'function') updateActiveStreakDisplay('flashcard');
+    if (FlashcardDOM.flashcardContainer) FlashcardDOM.flashcardContainer.classList.remove('hidden');
+    
+    await loadFlashcard();
+    prefetchNextFlashcard();
+}
+
+function prefetchFirstFlashcard() {
+    if (FlashcardState.prefetchedContent && FlashcardState.nextWordIndex === 0) return Promise.resolve();
+    if (FlashcardState.prefetchPromise) return FlashcardState.prefetchPromise;
+    
+    if (FlashcardState.shuffledWords.length === 0) FlashcardState.shuffleWords();
+    const firstWord = FlashcardState.shuffledWords[0];
+    FlashcardState.nextWordIndex = 0;
+    
+    FlashcardState.prefetchPromise = generateFlashcardContent(firstWord)
+        .then(content => {
+            FlashcardState.prefetchedContent = content;
+            FlashcardState.prefetchPromise = null;
+        })
+        .catch(() => {
+            FlashcardState.prefetchPromise = null;
+            FlashcardState.prefetchedContent = null;
+        });
+    
+    return FlashcardState.prefetchPromise;
+}
+
+function prefetchNextFlashcard() {
+    const nextIndex = FlashcardState.currentIndex + 1;
+    if (nextIndex >= FlashcardState.shuffledWords.length) return;
+    if (FlashcardState.prefetchedContent && FlashcardState.nextWordIndex === nextIndex) return;
+    if (FlashcardState.prefetchPromise) return;
+    
+    const nextWord = FlashcardState.shuffledWords[nextIndex];
+    FlashcardState.nextWordIndex = nextIndex;
+    
+    FlashcardState.prefetchPromise = generateFlashcardContent(nextWord)
+        .then(content => {
+            FlashcardState.prefetchedContent = content;
+            FlashcardState.prefetchPromise = null;
+        })
+        .catch(() => {
+            FlashcardState.prefetchPromise = null;
+            FlashcardState.prefetchedContent = null;
+        });
+}
+
+async function loadFlashcard() {
+    if (FlashcardState.currentIndex >= FlashcardState.shuffledWords.length) {
+        FlashcardState.reshuffleAndContinue();
+    }
+    
+    const word = FlashcardState.shuffledWords[FlashcardState.currentIndex];
+    
+    if (FlashcardDOM.flashcardWord) FlashcardDOM.flashcardWord.textContent = word;
+    if (FlashcardDOM.flashcardDefinition) {
+        FlashcardDOM.flashcardDefinition.textContent = 'Loading definition...';
+        FlashcardDOM.flashcardDefinition.classList.add('loading');
+    }
+    if (FlashcardDOM.flashcardExample) {
+        FlashcardDOM.flashcardExample.textContent = 'Loading example...';
+        FlashcardDOM.flashcardExample.classList.add('loading');
+    }
+    
+    updateFlashcardScore();
+    resetCardPosition();
+    
+    let content = null;
+    if (FlashcardState.prefetchedContent && FlashcardState.nextWordIndex === FlashcardState.currentIndex) {
+        content = FlashcardState.prefetchedContent;
+        FlashcardState.prefetchedContent = null;
+        FlashcardState.nextWordIndex = null;
+    }
+    
+    try {
+        if (!content) content = await generateFlashcardContent(word);
+        
+        FlashcardState.currentDefinition = content.definition;
+        FlashcardState.currentExample = content.example;
+        
+        if (FlashcardDOM.flashcardDefinition) {
+            FlashcardDOM.flashcardDefinition.textContent = content.definition;
+            FlashcardDOM.flashcardDefinition.classList.remove('loading');
+        }
+        if (FlashcardDOM.flashcardExample) {
+            FlashcardDOM.flashcardExample.innerHTML = highlightWordInExample(content.example, word);
+            FlashcardDOM.flashcardExample.classList.remove('loading');
+        }
+        prefetchNextFlashcard();
+    } catch (error) {
+        if (FlashcardDOM.flashcardDefinition) {
+            FlashcardDOM.flashcardDefinition.textContent = 'Content unavailable';
+            FlashcardDOM.flashcardDefinition.classList.remove('loading');
+        }
+        if (FlashcardDOM.flashcardExample) {
+            FlashcardDOM.flashcardExample.textContent = 'Please check your connection and try again.';
+            FlashcardDOM.flashcardExample.classList.remove('loading');
+        }
+    }
+}
+
+function highlightWordInExample(example, word) {
+    let safeExample = sanitizeHtml(example);
+    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const wordRegex = new RegExp(`\\b(${escapedWord}(?:s|es|ed|ing|er|est|ion|tion|ment|ness|ly|y|ies|ied)?)\\b`, 'gi');
+    return safeExample.replace(wordRegex, '<span class="word-highlight">$1</span>');
+}
+
+function updateFlashcardScore() {
+    if (FlashcardDOM.flashcardScore) {
+        FlashcardDOM.flashcardScore.textContent = `${FlashcardState.knownCount} / ${FlashcardState.totalCount}`;
+    }
+}
+
+function resetCardPosition() {
+    const card = FlashcardDOM.flashcardCard;
+    if (!card) return;
+    card.style.transform = '';
+    card.style.opacity = '1';
+    card.classList.remove('swiping-left', 'swiping-right');
+}
+
+function handleKnowWord() {
+    if (FlashcardState.isAnimating) return;
+    FlashcardState.isAnimating = true;
+    FlashcardState.knownCount++;
+    FlashcardState.totalCount++;
+    if (typeof StreakState !== 'undefined') {
+        StreakState.recordFlashcardWord();
+        updateActiveStreakDisplay('flashcard');
+    }
+    const card = FlashcardDOM.flashcardCard;
+    if (card) {
+        card.classList.add('swipe-right-animation');
+        setTimeout(() => {
+            card.classList.remove('swipe-right-animation');
+            FlashcardState.currentIndex++;
+            FlashcardState.isAnimating = false;
+            loadFlashcard();
+        }, 300);
+    } else {
+        FlashcardState.currentIndex++;
+        FlashcardState.isAnimating = false;
+        loadFlashcard();
+    }
+}
+
+function handleDontKnowWord() {
+    if (FlashcardState.isAnimating) return;
+    FlashcardState.isAnimating = true;
+    FlashcardState.totalCount++;
+    if (typeof StreakState !== 'undefined') {
+        StreakState.recordFlashcardWord();
+        updateActiveStreakDisplay('flashcard');
+    }
+    const card = FlashcardDOM.flashcardCard;
+    if (card) {
+        card.classList.add('swipe-left-animation');
+        setTimeout(() => {
+            card.classList.remove('swipe-left-animation');
+            FlashcardState.currentIndex++;
+            FlashcardState.isAnimating = false;
+            loadFlashcard();
+        }, 300);
+    } else {
+        FlashcardState.currentIndex++;
+        FlashcardState.isAnimating = false;
+        loadFlashcard();
+    }
+}
+
+function exitFlashcardMode() {
+    FlashcardState.reset();
+    if (FlashcardDOM.flashcardPage) FlashcardDOM.flashcardPage.classList.remove('active');
+    if (DOM.welcomePage) DOM.welcomePage.classList.add('active');
+    if (typeof updateStreakBadges === 'function') updateStreakBadges();
+}
+
+let touchStartX = 0;
+let touchCurrentX = 0;
+let isDragging = false;
+
+function initFlashcardGestures() {
+    const swipeArea = FlashcardDOM.flashcardContainer;
+    if (!swipeArea) return;
+    swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
+    swipeArea.addEventListener('touchmove', handleTouchMove, { passive: true });
+    swipeArea.addEventListener('touchend', handleTouchEnd);
+    swipeArea.addEventListener('mousedown', handleMouseDown);
+}
+
+function handleTouchStart(e) {
+    if (FlashcardState.isAnimating) return;
+    if (e.target.closest('.flashcard-action-btn')) return;
+    touchStartX = e.touches[0].clientX;
+    isDragging = true;
+}
+
+function handleMouseDown(e) {
+    if (FlashcardState.isAnimating) return;
+    if (e.target.closest('.flashcard-action-btn')) return;
+    touchStartX = e.clientX;
+    isDragging = true;
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+}
+
+function handleMouseMove(e) {
+    if (!isDragging) return;
+    touchCurrentX = e.clientX;
+    updateCardPosition();
+}
+
+function handleTouchMove(e) {
+    if (!isDragging) return;
+    touchCurrentX = e.touches[0].clientX;
+    updateCardPosition();
+}
+
+function updateCardPosition() {
+    const card = FlashcardDOM.flashcardCard;
+    if (!card) return;
+    const deltaX = touchCurrentX - touchStartX;
+    const rotate = deltaX * 0.05;
+    const opacity = 1 - Math.abs(deltaX) / 500;
+    card.style.transform = `translateX(${deltaX}px) rotate(${rotate}deg)`;
+    card.style.opacity = Math.max(0.5, opacity);
+    card.classList.remove('swiping-left', 'swiping-right');
+    if (deltaX > 50) card.classList.add('swiping-right');
+    else if (deltaX < -50) card.classList.add('swiping-left');
+}
+
+function handleTouchEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    const deltaX = touchCurrentX - touchStartX;
+    const threshold = 100;
+    if (deltaX > threshold) handleKnowWord();
+    else if (deltaX < -threshold) handleDontKnowWord();
+    else resetCardPosition();
+}
+
+function handleMouseUp() {
+    handleTouchEnd();
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!FlashcardDOM.flashcardPage?.classList.contains('active')) return;
+    if (FlashcardState.isAnimating) return;
+    const key = e.key.toUpperCase();
+    switch (key) {
+        case 'ARROWLEFT': case 'LEFT': case 'N': e.preventDefault(); handleDontKnowWord(); break;
+        case 'ARROWRIGHT': case 'RIGHT': case 'K': case 'Y': e.preventDefault(); handleKnowWord(); break;
+        case 'ESCAPE': e.preventDefault(); exitFlashcardMode(); break;
+    }
+});
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - UI Functions
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+const DOM = {
+    get welcomePage() { return $('welcomePage'); },
+    get appPage() { return $('appPage'); },
+    get btnStart() { return $('btnStart'); },
+    get btnBack() { return $('btnBack'); },
+    get loading() { return $('loading'); },
+    get loadingText() { return $('loadingText'); },
+    get questionArea() { return $('questionArea'); },
+    get sentence() { return $('sentence'); },
+    get options() { return $('options'); },
+    get feedback() { return $('feedback'); },
+    get feedbackText() { return $('feedbackText'); },
+    get btnNext() { return $('btnNext'); },
+    get quizActions() { return document.querySelector('.quiz-actions'); },
+    get scoreEl() { return $('quizScore'); },
+    get errorState() { return $('errorState'); },
+    get errorMessage() { return $('errorMessage'); },
+    get btnRetry() { return $('btnRetry'); },
+};
+
+function showNotification(type, message, duration = 5000) {
+    const container = document.getElementById('notificationContainer');
+    if (!container) return;
+    const icons = { error: '✕', warning: '!', info: 'ℹ', success: '✓' };
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `<span class="notification-icon">${icons[type] || 'ℹ'}</span><span>${sanitizeHtml(message)}</span><button class="notification-close" onclick="this.parentElement.remove()">×</button>`;
+    container.appendChild(notification);
+    if (duration > 0) {
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.classList.add('exit');
+                setTimeout(() => notification.remove(), 300);
+            }
+        }, duration);
+    }
+    return notification;
+}
+
+function showGlobalError(message = null) {
+    const boundary = document.getElementById('globalErrorBoundary');
+    if (boundary) {
+        if (message) {
+            const p = boundary.querySelector('p');
+            if (p) p.textContent = message;
+        }
+        boundary.classList.add('active');
+    }
+}
+
+function hideGlobalError() {
+    const boundary = document.getElementById('globalErrorBoundary');
+    if (boundary) boundary.classList.remove('active');
+}
+
+function initOfflineDetection() {
+    const updateOnlineStatus = () => {
+        const indicator = document.getElementById('offlineIndicator');
+        if (!indicator) return;
+        if (navigator.onLine) {
+            indicator.classList.remove('active');
+            if (!AppState.prefetched && !AppState.isLoading && !AppState.prefetchPromise) {
+                prefetchQuestion();
+            }
+        } else {
+            indicator.classList.add('active');
+            showNotification('warning', 'You\'re offline. Check your connection to continue.', 3000);
+        }
+    };
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+}
+
+function showApp() {
+    if (!checkRateLimit()) return;
+    if (!Array.isArray(MYWORDS) || MYWORDS.length === 0) {
+        showNotification('error', 'Word list is not available. Please refresh the page.');
+        return;
+    }
+    if (DOM.welcomePage) DOM.welcomePage.classList.remove('active');
+    if (DOM.appPage) DOM.appPage.classList.add('active');
+    if (typeof updateActiveStreakDisplay === 'function') updateActiveStreakDisplay('quiz');
+    
+    if (AppState.prefetched && AppState.isFirstQuestion) {
+        AppState.isFirstQuestion = false;
+        showLoading(false);
+        AppState.currentQuestion = AppState.prefetched;
+        AppState.prefetched = null;
+        displayQuestion();
+        prefetchQuestion();
+    } else {
+        loadQuestion();
+    }
+}
+
+function showWelcome() {
+    AppState.cancelPendingRequests();
+    AppState.reset();
+    if (typeof FlashcardState !== 'undefined' && FlashcardState.reset) FlashcardState.reset();
+    if (DOM.appPage) DOM.appPage.classList.remove('active');
+    if (FlashcardDOM.flashcardPage) FlashcardDOM.flashcardPage.classList.remove('active');
+    if (DOM.welcomePage) DOM.welcomePage.classList.add('active');
+    if (DOM.scoreEl) DOM.scoreEl.textContent = '0 / 0';
+    if (typeof updateStreakBadges === 'function') updateStreakBadges();
+    if (!AppState.prefetched && !AppState.prefetchPromise) {
+        prefetchQuestion().catch(() => {});
+    }
+    prefetchFirstFlashcard().catch(() => {});
+}
+
+function showLoading(show) {
+    AppState.isLoading = show;
+    if (DOM.loading) DOM.loading.classList.toggle('hidden', !show);
+    if (DOM.questionArea) DOM.questionArea.classList.toggle('hidden', show);
+    if (DOM.errorState) DOM.errorState.classList.add('hidden');
+}
+
+function showError(message, showRetry = true) {
+    showLoading(false);
+    if (DOM.questionArea) DOM.questionArea.classList.add('hidden');
+    if (DOM.errorState) {
+        DOM.errorState.classList.remove('hidden');
+        if (DOM.errorMessage) DOM.errorMessage.textContent = message;
+        if (DOM.btnRetry) DOM.btnRetry.style.display = showRetry ? 'block' : 'none';
+    }
+}
+
+function updateQuizScore() {
+    if (DOM.scoreEl) DOM.scoreEl.textContent = `${AppState.correct} / ${AppState.total}`;
+}
+
+async function loadQuestion() {
+    if (AppState.isLoading) return;
+    AppState.hasAnswered = false;
+    showLoading(true);
+    if (DOM.loadingText) DOM.loadingText.textContent = 'Generating question...';
+    
+    try {
+        if (AppState.prefetched) {
+            AppState.currentQuestion = AppState.prefetched;
+            AppState.prefetched = null;
+        } else {
+            AppState.currentQuestion = await generateQuestion();
+        }
+        displayQuestion();
+        showLoading(false);
+        prefetchQuestion();
+    } catch (error) {
+        let userMessage = 'Couldn\'t load the question.';
+        let showRetry = true;
+        if (error.message.includes('offline')) userMessage = 'You\'re offline. Check your connection and try again.';
+        else if (error.message.includes('timeout')) userMessage = 'The server is taking too long. Please try again.';
+        else if (error.message.includes('Too many')) { userMessage = error.message; showRetry = false; }
+        else if (error.message.includes('circuit')) { userMessage = 'Service temporarily unavailable. Please wait a moment.'; showRetry = false; }
+        else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+            userMessage = 'Network error. Please check your connection and try again.';
+        }
+        showError(userMessage, showRetry);
+    }
+}
+
+function displayQuestion() {
+    const question = AppState.currentQuestion;
+    if (!question) {
+        showError('Something went wrong. Please try again.');
+        return;
+    }
+    try {
+        const sentenceHtml = sanitizeHtml(question.sentence)
+            .replace(/\*\*([^*]+)\*\*/g, '$1')
+            .replace(/\*([^*]+)\*/g, '$1')
+            .replace(/_{3,}/g, '<span class="blank">_____</span>');
+        if (DOM.sentence) DOM.sentence.innerHTML = sentenceHtml;
+        
+        const originalCorrectIndex = question.correctIndex;
+        const indexed = question.options.map((opt, i) => ({ opt, origIndex: i, explanation: question.explanations?.[i] }));
+        for (let i = indexed.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [indexed[i], indexed[j]] = [indexed[j], indexed[i]];
+        }
+        question.options = indexed.map(x => x.opt);
+        question.correctIndex = indexed.findIndex(x => x.origIndex === originalCorrectIndex);
+        if (question.explanations) question.explanations = indexed.map(x => x.explanation);
+        
+        const keys = ['A', 'B', 'C', 'D', 'E'];
+        if (DOM.options) {
+            DOM.options.innerHTML = question.options.map((opt, i) => `
+                <button class="option" data-index="${i}" type="button" style="animation-delay: ${i * 0.05}s">
+                    <div class="option-main">
+                        <span class="key">${keys[i]}</span>
+                        <span class="option-text">${sanitizeHtml(opt).toLowerCase()}</span>
+                    </div>
+                    <div class="option-explanation" data-index="${i}"></div>
+                </button>
+            `).join('');
+            DOM.options.querySelectorAll('.option').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (!AppState.hasAnswered && !btn.disabled) selectAnswer(+btn.dataset.index);
+                });
+            });
+        }
+        if (DOM.feedback) DOM.feedback.classList.add('hidden');
+        if (DOM.questionArea) DOM.questionArea.classList.remove('answered');
+        if (DOM.btnNext) DOM.btnNext.classList.add('hidden');
+        updateQuizScore();
+    } catch (error) {
+        showError('Failed to display question. Please try again.');
+    }
+}
+
+function selectAnswer(index) {
+    if (AppState.hasAnswered) return;
+    AppState.hasAnswered = true;
+    if (typeof index !== 'number' || index < 0 || index > 4) return;
+    const question = AppState.currentQuestion;
+    if (!question || typeof question.correctIndex !== 'number') return;
+    
+    const isCorrect = index === question.correctIndex;
+    AppState.total++;
+    if (isCorrect) AppState.correct++;
+    updateQuizScore();
+    
+    if (typeof StreakState !== 'undefined') {
+        StreakState.recordQuizWord();
+        updateActiveStreakDisplay('quiz');
+    }
+    
+    const optionButtons = DOM.options ? DOM.options.querySelectorAll('.option') : [];
+    optionButtons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === index) btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+        if (i === question.correctIndex && !isCorrect) btn.classList.add('revealed');
+        const explanationDiv = btn.querySelector('.option-explanation');
+        if (explanationDiv && question.explanations && question.explanations[i]) {
+            explanationDiv.textContent = question.explanations[i];
+            explanationDiv.classList.add('show');
+        }
+    });
+    if (DOM.btnNext) DOM.btnNext.classList.remove('hidden');
+    if (DOM.questionArea) DOM.questionArea.classList.add('answered');
+    
+    setTimeout(() => {
+        const selectedBtn = optionButtons[index];
+        if (selectedBtn) selectedBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+}
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Thunder YDS - Main Application
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+window.addEventListener('error', (event) => {
+    console.error('Global error caught:', event.error);
+    showGlobalError();
+    event.preventDefault();
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('Unhandled promise rejection:', event.reason);
+    showNotification('error', 'Something unexpected happened. Please refresh if issues continue.');
+    event.preventDefault();
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+    if (typeof MYWORDS === 'undefined' || !Array.isArray(MYWORDS) || MYWORDS.length === 0) {
+        showGlobalError('Word list failed to load. Please refresh the page.');
+        return;
+    }
+    
+    const criticalElements = ['welcomePage', 'appPage', 'modeSelection', 'loading', 'questionArea'];
+    const missing = criticalElements.filter(id => !document.getElementById(id));
+    if (missing.length > 0) {
+        showGlobalError('Page failed to load correctly. Please refresh.');
+        return;
+    }
+    
+    initOfflineDetection();
+    
+    if (typeof initStreak === 'function') {
+        try { await initStreak(); } catch (err) {}
+    }
+    
+    Promise.all([
+        prefetchQuestion().catch(() => {}),
+        prefetchFirstFlashcard().catch(() => {})
+    ]);
+});
+
+if (DOM.btnBack) {
+    DOM.btnBack.addEventListener('click', debounce(() => {
+        AppState.cancelPendingRequests();
+        AppState.reset();
+        showWelcome();
+    }, CONFIG.debounceDelay));
+}
+
+if (DOM.btnNext) {
+    DOM.btnNext.addEventListener('click', debounce(() => {
+        if (!AppState.isLoading) loadQuestion();
+    }, CONFIG.debounceDelay));
+}
+
+if (DOM.btnRetry) {
+    DOM.btnRetry.addEventListener('click', debounce(() => loadQuestion(), CONFIG.debounceDelay));
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!DOM.appPage?.classList.contains('active')) return;
+    if (AppState.isLoading) return;
+    const key = e.key.toUpperCase();
+    if (!AppState.hasAnswered && AppState.currentQuestion) {
+        const optionIndex = ['A', 'B', 'C', 'D', 'E'].indexOf(key);
+        const numberIndex = ['1', '2', '3', '4', '5'].indexOf(e.key);
+        const index = optionIndex !== -1 ? optionIndex : numberIndex;
+        if (index !== -1 && index < AppState.currentQuestion.options.length) {
+            e.preventDefault();
+            selectAnswer(index);
+            return;
+        }
+    }
+    if (AppState.hasAnswered && (key === 'ENTER' || key === ' ')) {
+        e.preventDefault();
+        if (!DOM.btnNext?.classList.contains('hidden')) DOM.btnNext.click();
+        return;
+    }
+    if (key === 'ESCAPE') {
+        e.preventDefault();
+        showWelcome();
+        return;
+    }
+});
+
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        if (AppState.prefetchPromise && !AppState.currentQuestion) {
+            AppState.cancelPendingRequests();
+        }
+    } else {
+        if (!AppState.prefetched && !AppState.isLoading && DOM.appPage?.classList.contains('active')) {
+            prefetchQuestion();
+        }
+    }
+});
+
+window.addEventListener('beforeunload', (e) => {
+    if (AppState.isLoading) {
+        e.preventDefault();
+        e.returnValue = 'A question is loading. Are you sure you want to leave?';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (FlashcardDOM.btnModeQuiz) {
+        FlashcardDOM.btnModeQuiz.addEventListener('click', () => {
+            if (AppState.prefetched && AppState.isFirstQuestion) {
+                AppState.isFirstQuestion = false;
+                if (DOM.welcomePage) DOM.welcomePage.classList.remove('active');
+                if (DOM.appPage) DOM.appPage.classList.add('active');
+                showLoading(false);
+                AppState.currentQuestion = AppState.prefetched;
+                AppState.prefetched = null;
+                displayQuestion();
+                prefetchQuestion();
+            } else if (AppState.prefetchPromise && AppState.isFirstQuestion) {
+                if (DOM.welcomePage) DOM.welcomePage.classList.remove('active');
+                if (DOM.appPage) DOM.appPage.classList.add('active');
+                showLoading(true);
+                AppState.prefetchPromise.then(() => {
+                    if (AppState.prefetched && AppState.isFirstQuestion) {
+                        AppState.isFirstQuestion = false;
+                        showLoading(false);
+                        AppState.currentQuestion = AppState.prefetched;
+                        AppState.prefetched = null;
+                        displayQuestion();
+                        prefetchQuestion();
+                    }
+                }).catch(() => loadQuestion());
+            } else {
+                showApp();
+            }
+        });
+    }
+    
+    if (FlashcardDOM.btnModeFlashcard) {
+        FlashcardDOM.btnModeFlashcard.addEventListener('click', () => startFlashcardMode());
+    }
+    
+    if (FlashcardDOM.btnFlashcardBack) {
+        FlashcardDOM.btnFlashcardBack.addEventListener('click', exitFlashcardMode);
+    }
+    
+    if (FlashcardDOM.btnDontKnow) {
+        FlashcardDOM.btnDontKnow.addEventListener('click', handleDontKnowWord);
+    }
+    
+    if (FlashcardDOM.btnKnow) {
+        FlashcardDOM.btnKnow.addEventListener('click', handleKnowWord);
+    }
+    
+    initFlashcardGestures();
+});
+
+const APP_VERSION = '1.0.0';
+console.log(`Thunder YDS v${APP_VERSION} initialized`);
+    </script>
+</body>
+</html>
