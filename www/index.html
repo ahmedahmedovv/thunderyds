@@ -1663,6 +1663,13 @@ async function generateQuestion(attempt = 1) {
         return question;
         
     } catch (error) {
+        // Detect CORS errors (they typically throw TypeError with "Failed to fetch")
+        const isCorsError = error.message.includes('Failed to fetch') || 
+                           (error instanceof TypeError && !navigator.onLine === false);
+        if (isCorsError && !navigator.onLine === false) {
+            throw new Error('Connection blocked by CORS policy. If running in a browser, please use the iOS app instead, or contact support to fix server configuration.');
+        }
+        
         const isRetryable = error.message.includes('timeout') || error.message.includes('network') || 
                            error.message.includes('busy') || error.message.includes('Server error');
         if (isRetryable && attempt < CONFIG.retryAttempts) {
@@ -2123,6 +2130,12 @@ Keep the definition under 20 words. The example should be academic/formal in ton
         recordSuccess();
         return content;
     } catch (error) {
+        // Detect CORS errors
+        const isCorsError = error.message.includes('Failed to fetch') || 
+                           (error instanceof TypeError && navigator.onLine);
+        if (isCorsError) {
+            throw new Error('Connection blocked by CORS policy. If running in a browser, please use the iOS app instead, or contact support to fix server configuration.');
+        }
         recordFailure();
         throw error;
     }
