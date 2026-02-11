@@ -42,7 +42,8 @@ The app implements Apple's iOS Human Interface Guidelines with:
 │       ├── generate-question.js  # Serverless function for AI question generation
 │       └── package.json          # Function dependencies
 ├── www/                     # Web application source (deployed to iOS)
-│   ├── index.html          # Single-page application (~2800 lines)
+│   ├── index.html          # Single-page application (~2600 lines, 10 sections)
+│   ├── words.json          # Vocabulary database (~1262 words)
 │   └── capacitor.js        # Capacitor runtime
 ├── ios/                     # iOS native project
 │   ├── App/
@@ -87,7 +88,21 @@ The app implements Apple's iOS Human Interface Guidelines with:
 ## Application Architecture
 
 ### Web Application (`www/index.html`)
-The entire app is contained in a single HTML file with embedded CSS and JavaScript (~2800 lines).
+The entire app is contained in a single HTML file with embedded CSS and JavaScript (~2600 lines), organized into clear sections:
+
+#### Code Organization (10 Sections)
+| Section | Name | Description |
+|---------|------|-------------|
+| 0 | **Styles & Theme** | iOS Design System CSS with dark mode support |
+| 1 | **Data Loading** | Dynamic vocabulary loading from `words.json` |
+| 2 | **Configuration** | App settings, API configs, and AI prompt templates |
+| 3 | **State Management** | AppState, FlashcardState, and global state containers |
+| 4 | **Utility Functions** | Helpers for validation, formatting, DOM manipulation |
+| 5 | **API Layer** | OpenRouter integration with circuit breaker pattern |
+| 6 | **Streak System** | Daily progress tracking with persistence |
+| 7 | **Flashcard Mode** | Tinder-style swipe study interface |
+| 8 | **UI Renderers** | Quiz display, answer handling, screen transitions |
+| 9 | **Initialization** | Event listeners and app bootstrap |
 
 #### UI Sections
 1. **Welcome Screen** (`welcome-minimal`): App intro with mode selection
@@ -101,9 +116,10 @@ The entire app is contained in a single HTML file with embedded CSS and JavaScri
 - **CONFIG**: Application configuration (API settings, limits, prompts)
 - **API_CONFIG**: API endpoint configuration
 - **NativeStorage**: Bridge to native iOS storage via WKWebView message handlers
+- **loadWordList()**: Async loader for vocabulary words from `words.json`
 
-#### Word Database
-The app contains an embedded vocabulary list (`MYWORDS` array) with ~700 academic English words/phrases including:
+#### Word Database (`www/words.json`)
+The vocabulary list (~1262 words) is stored in a separate JSON file for easier maintenance:
 - Single words: "Abandon", "Abstract", "Abundant", etc.
 - Phrasal verbs: "Account for", "Back up", "Break down", etc.
 - Prepositional phrases: "In accordance with", "In terms of", etc.
@@ -306,10 +322,30 @@ Since web assets are bundled in the iOS app, any `www/index.html` changes requir
 
 ## Notes for AI Agents
 
+### Architecture
 - This is a **single-file web app** - all logic is in `www/index.html`
+- **10 clearly numbered sections** - maintain this organization when editing
+- **External data**: Vocabulary words loaded from `words.json` (not hardcoded anymore)
+
+### Development Workflow
 - Changes to iOS native code should be minimal (Capacitor handles most bridging)
 - Always run `npx cap sync` after modifying `www/` files
 - The app uses a remote AI API - network connectivity is required for quiz generation
 - Streak data is stored in localStorage (clears on app reinstall)
-- The word list (`MYWORDS`) is hardcoded in the HTML file
-- When editing, maintain the existing code organization with clear section headers
+
+### Code Organization
+When editing `index.html`, maintain the section structure:
+```
+/* ═════════════════════════════════════════════════════════════════════════════
+   SECTION X: SECTION NAME
+   Description of what this section does
+   ═════════════════════════════════════════════════════════════════════════════ */
+```
+
+### Key Files
+| File | Purpose | Edit Frequency |
+|------|---------|----------------|
+| `www/index.html` | Main application | High |
+| `www/words.json` | Vocabulary database | Low |
+| `netlify/functions/generate-question.js` | AI proxy | Medium |
+| `capacitor.config.json` | App config | Rare |
