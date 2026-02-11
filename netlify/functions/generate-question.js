@@ -55,11 +55,27 @@ exports.handler = async (event, context) => {
         const apiKey = process.env.OPENROUTER_API_KEY;
 
         if (!apiKey) {
-            console.error('OPENROUTER_API_KEY not configured');
+            console.error('OPENROUTER_API_KEY not configured in Netlify environment variables');
             return {
                 statusCode: 500,
                 headers,
-                body: JSON.stringify({ error: 'Server configuration error' })
+                body: JSON.stringify({ 
+                    error: 'Server configuration error',
+                    message: 'API key not configured. Please add OPENROUTER_API_KEY to Netlify environment variables.'
+                })
+            };
+        }
+        
+        // Validate API key format (should start with sk-or-)
+        if (!apiKey.startsWith('sk-or-')) {
+            console.error('OPENROUTER_API_KEY has invalid format');
+            return {
+                statusCode: 500,
+                headers,
+                body: JSON.stringify({ 
+                    error: 'Server configuration error',
+                    message: 'Invalid API key format. OpenRouter keys should start with "sk-or-"'
+                })
             };
         }
 
@@ -67,36 +83,62 @@ exports.handler = async (event, context) => {
         console.log('[Netlify] Starting OpenRouter request');
         const startTime = Date.now();
         
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`,
-                'HTTP-Referer': 'https://thunder.yds.today',
-                'X-Title': 'Thunder YDS'
-            },
-            body: JSON.stringify({
-                model: 'mistralai/ministral-8b',
-                messages: [{ role: 'user', content: prompt }],
-                temperature: 0.8,
-                max_tokens: 768,  // Reduced from 1024 - responses are typically 300-500 tokens
-                response_format: { type: 'json_object' }
-            })
-        });
+        // Try multiple models in case one fails
+        const models = [
+            'mistralai/ministral-8b',
+            'mistralai/mistral-7b-instruct',
+            'openai/gpt-3.5-turbo'
+        ];
+        
+        let response;
+        let lastError;
+        
+        for (const model of models) {
+            try {
+                console.log(`[Netlify] Trying model: ${model}`);
+                response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`,
+                        'HTTP-Referer': 'https://thunder.yds.today',
+                        'X-Title': 'Thunder YDS'
+                    },
+                    body: JSON.stringify({
+                        model: model,
+                        messages: [{ role: 'user', content: prompt }],
+                        temperature: 0.8,
+                        max_tokens: 768,
+                        response_format: { type: 'json_object' }
+                    })
+                });
+                
+                if (response.ok) {
+                    console.log(`[Netlify] Model ${model} succeeded`);
+                    break;
+                } else {
+                    lastError = await response.text();
+                    console.error(`[Netlify] Model ${model} failed:`, response.status, lastError);
+                }
+            } catch (err) {
+                console.error(`[Netlify] Model ${model} error:`, err.message);
+                lastError = err.message;
+            }
+        }
         
         const duration = Date.now() - startTime;
-        console.log(`[Netlify] OpenRouter response received in ${duration}ms, status: ${response.status}`);
+        console.log(`[Netlify] OpenRouter response received in ${duration}ms, status: ${response?.status}`);
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('OpenRouter API error:', response.status, errorText);
+        if (!response || !response.ok) {
+            console.error('OpenRouter API error - all models failed. Last error:', lastError);
             
             return {
-                statusCode: response.status,
+                statusCode: 502,
                 headers,
                 body: JSON.stringify({ 
-                    error: 'Failed to generate question',
-                    status: response.status 
+                    error: 'AI service unavailable',
+                    message: 'All AI models failed. Please try again later.',
+                    details: lastError?.substring(0, 200)
                 })
             };
         }
